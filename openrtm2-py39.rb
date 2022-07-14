@@ -16,11 +16,10 @@ class Openrtm2Py39 < Formula
   sha256 "fe0ec792f2a4d4b3667abe6b2471bf844e49026ebe61b623da8309e011f8c206"
   license "LGPL-2.1"
 
-#  bottle do
-#    root_url "https://github.com/OpenRTM/homebrew-openrtm2/releases/download/1.2.2"
-#    rebuild 3
-#    sha256 cellar: :any, catalina: "73d78211037404bff9268945ddf9d6cd67fa972980e492552e96ab5c116cfb9b"
-#  end
+  bottle do
+    root_url "https://github.com/OpenRTM/homebrew-openrtm2/releases/download/2.0.0"
+    sha256 cellar: :any, big_sur: "e99ed2036afb54ec6d3026b198bcc1761c813c7b0bb26e7c6c7a30c22a1ab487"
+  end
 
   depends_on "boost"
   depends_on "cmake" => :build
