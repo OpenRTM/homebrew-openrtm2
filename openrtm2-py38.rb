@@ -4,12 +4,12 @@
 # Author: Noriaki Ando <Noriaki.Ando@gmail.com>
 # GitHub: https://github.com/OpenRTM/homebrew-openrtm
 #
-# This is the formula for OpenRTM-aist (C++) for python3.9.
-# To use this formula/bottle, switch python into python 3.9.
+# This is the formula for OpenRTM-aist (C++) for python3.8.
+# To use this formula/bottle, switch python into python 3.8.
 # $ brew unlink python3 (unlink python 3.X)
-# $ brew link python@3.9
+# $ brew link python@3.8
 #============================================================
-class Openrtm2Py39 < Formula
+class Openrtm2Py38 < Formula
   desc "OpenRTM2: RT-Middleware and OMG RTC implementation in C++ implemented by AIST"
   homepage "https://openrtm.org"
   url "https://github.com/OpenRTM/OpenRTM-aist/archive/refs/tags/v2.0.0.tar.gz"
@@ -18,12 +18,12 @@ class Openrtm2Py39 < Formula
 
   bottle do
     root_url "https://github.com/OpenRTM/homebrew-openrtm2/releases/download/2.0.0"
-    sha256 cellar: :any, big_sur: "e99ed2036afb54ec6d3026b198bcc1761c813c7b0bb26e7c6c7a30c22a1ab487"
+    sha256 cellar: :any, big_sur: "6681f6468a8f204e065a1a960c44763d8b91f886199b7c6ba9072a9c35aadd65"
   end
 
   depends_on "boost"
   depends_on "cmake" => :build
-  depends_on "openrtm/omniorb/omniorb-ssl-py39"
+  depends_on "openrtm/omniorb/omniorb-ssl-py38"
 
   def install
     system "cmake", "-S", ".", "-B", "build", *std_cmake_args
