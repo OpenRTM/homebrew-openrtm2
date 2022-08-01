@@ -11,7 +11,6 @@ cask "openrtp2-jp" do
   sha256 "e84cdf01dd7186855e2be504f50a95b7d31cb48ec8182fd6d85220f0dd2923fa"
   
   url "https://github.com/OpenRTM/homebrew-openrtm2/releases/download/2.0.0/openrtp2-jp_v2.0.0.dmg"
-      verified: "github.com/OpenRTM/homebrew-openrtm2/releases/download/2.0.0/"
   name "OpenRTP2"
   desc "Open RT Platform tool chain ver 2.0 (Japanese)"
   homepage "https://openrtm.org/"
