@@ -20,6 +20,13 @@ cask "openrtp2" do
 
   app "OpenRTP2.app"
 
+  preflight do
+    system_command "chflags",
+                   args: ["nohidden", "#{staged_path}/OpenRTP2.app"]
+    system_command "xattr",
+                   args: ["-cr", "#{staged_path}/OpenRTP2.app"]
+  end
+
   caveats do
     depends_on_java "8"
   end
