@@ -8,7 +8,7 @@ cask "openrtp2" do
   arch arm: "aarch64", intel: "x86_64"
 
   version "2.0.0"
-  sha256 "4af95d1082ad22bb31ad78705761b014d4e2258bb6a66016e72febfa2b487d10"
+  sha256 "8c73bd59a4c958a1f018e8a966de9b861a434c9050ed42e8919be6f024e7b921"
 
   url "https://github.com/OpenRTM/homebrew-openrtm2/releases/download/2.0.0/openrtp2-en_v2.0.0.dmg",
       verified: "github.com/OpenRTM/homebrew-openrtm2/releases/download/2.0.0/"
