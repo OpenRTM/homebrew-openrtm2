@@ -8,7 +8,7 @@ cask "openrtp2" do
   arch arm: "aarch64", intel: "x86_64"
 
   version "2.0.0"
-  sha256 "c834695e59c8abd355799c041f6ce6c8a14451114a0b264b2ca76dd06de2e4fc"
+  sha256 "4af95d1082ad22bb31ad78705761b014d4e2258bb6a66016e72febfa2b487d10"
 
   url "https://github.com/OpenRTM/homebrew-openrtm2/releases/download/2.0.0/openrtp2-en_v2.0.0.dmg",
       verified: "github.com/OpenRTM/homebrew-openrtm2/releases/download/2.0.0/"
@@ -18,13 +18,13 @@ cask "openrtp2" do
 
   depends_on cask: "homebrew/cask-versions/adoptopenjdk8"
 
-  app "OpenRTP2.app"
+  app "OpenRTP2-en.app"
 
   preflight do
     system_command "chflags",
-                   args: ["nohidden", "#{staged_path}/OpenRTP2.app"]
+                   args: ["nohidden", "#{staged_path}/OpenRTP2-en.app"]
     system_command "xattr",
-                   args: ["-cr", "#{staged_path}/OpenRTP2.app"]
+                   args: ["-cr", "#{staged_path}/OpenRTP2-en.app"]
   end
 
   caveats do
