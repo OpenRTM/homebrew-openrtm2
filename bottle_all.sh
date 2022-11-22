@@ -1,13 +1,10 @@
 #!/bin/bash
 
-#build=(
-#    "openrtm-aist-py38   python@3.8"
-#    "openrtm-aist-py39   python@3.9"
-#    "openrtm-aist-py310  python@3.10"
-#    "openrtm-aist        python@3.10"
-#)
 build=(
-    "openrtm-aist-py310  python@3.10"
+    "openrtm2-py38   python@3.8"
+    "openrtm2-py39   python@3.9"
+    "openrtm2-py310  python@3.10"
+    "openrtm2-py311  python@3.11"
 )
 
 bottle()
@@ -45,6 +42,7 @@ echo "Bottling the forllowing packages"
 for ((i=0; ${#build[*]}>$i; i++)) ; do
     tmp=(${build[$i]})
     echo "${tmp[0]}"
+    brew unlink "${tmp[0]}"
 done
 
 echo ""
@@ -54,7 +52,7 @@ brew install openssl@1.1
 brew link openssl@1.1
 
 echo ""
-echo "Bottling OpenRTM-aist"
+echo "Bottling openrtm2-aist"
 echo ""
 for ((i=0; ${#build[*]}>$i; i++)) ; do
     tmp=(${build[$i]})
