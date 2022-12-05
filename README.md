@@ -29,7 +29,7 @@ Please install the omniORB bottle "[omniorb-ssl](https://github.com/OpenRTM/home
 ```shell
 $ brew update
 $ brew uninstall omniorb  <--- if you already installed omniorb
-$ brew install openrtm/openrtm/openrtm2-py310 (if you still use Python 3.10)
+$ brew install openrtm/openrtms/openrtm2-py310 (if you still use Python 3.10)
 $ brew link openrtm2-py10
 and then please try to run sample components 
 $ /usr/local/share/openrtm-2.0/components/c++/examples/ConsoleInComp
@@ -39,7 +39,7 @@ $ /usr/local/share/openrtm-2.0/components/c++/examples/ConsoleInComp
 Please install the omniORBpy bottle "[omniorbpy](https://github.com/OpenRTM/homebrew-omniorb)" provided us. This package is automatically installed as a dependency.
 ```shell
 $ brew update
-$ brew install openrtm/openrtm/openrtm2-python-py310 (if you still use Python 3.10)
+$ brew install openrtm/openrtms/openrtm2-python-py310 (if you still use Python 3.10)
 $ brew link openrtm-aist-python
 and then please try to run sample components
 $ python3 /usr/local/share/openrtm-2.0/components/python3/SimpleIO/ConsoleIn.py 
@@ -50,7 +50,7 @@ Java8 is necesarry for OpenRTM-aist-Java and OpenRTP. The adoptopenjdk8 will be 
 ```shell
 $ brew update
 $ brew cask install adoptopenjdk8
-$ brew install openrtm/openrtm/openrtm2-java
+$ brew install openrtm/openrtms/openrtm2-java
 $ cat /usr/local/etc/profile.d/openrtm-aist-java.sh >> ~/.profile
 $ source ~/.profile
 and then please try to run sample components
@@ -62,7 +62,7 @@ Due to the OpenRTP dependency, the Cask of adoptopenjdk8 will be installed autom
 
 ```shell
 $ brew update
-$ brew tap openrtm/openrtm
+$ brew tap openrtm/openrtms
 $ brew install openrtp
 note: "brew cask" command is obsolete.
 $ open -a OpenRTP
