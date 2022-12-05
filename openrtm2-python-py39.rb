@@ -20,9 +20,10 @@ class Openrtm2PythonPy39 < Formula
   depends_on "doxygen" => :build
 
   def install
+    python3 = "#{Formula["python@3.9"].opt_bin}/python3.9"
     comp_dir = "#{prefix}/share/openrtm-2.0/components/python3/"
-    system "/usr/local/opt/python@3.9/bin/python3.9", "setup.py", "build"
-    system "/usr/local/opt/python@3.9/bin/python3.9", "setup.py", "install", "--prefix=#{prefix}"
+    system python3, "setup.py", "build"
+    system python3, "setup.py", "install", "--prefix=#{prefix}"
     FileUtils.chmod_R(0755, comp_dir.to_s)
   end
 
