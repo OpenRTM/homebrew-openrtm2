@@ -1,10 +1,10 @@
 #!/bin/bash
 
 build=(
-#    "openrtm2-python-py38  python@3.8"
+    "openrtm2-python-py38  python@3.8"
     "openrtm2-python-py39  python@3.9"
-#    "openrtm2-python-py310 python@3.10"
-#    "openrtm2-python-py311 python@3.11"
+    "openrtm2-python-py310 python@3.10"
+    "openrtm2-python-py311 python@3.11"
 )
 
 bottle()

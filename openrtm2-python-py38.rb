@@ -13,10 +13,11 @@ class Openrtm2PythonPy38 < Formula
 
   bottle do
     root_url "https://github.com/OpenRTM/homebrew-openrtm2/releases/download/2.0.0"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "9a6c898540f5f4e2f50073e672430c83a7200778589fdc84f6608aa9abce4adc"
     sha256 cellar: :any_skip_relocation, big_sur: "442ef00e26c02c6d6035c65294e8d97514fb105cbd4ed55ccc79c4b8daa5bb9e"
   end
 
-  depends_on "openrtm/omniorb/omniorbpy-py38"
+  depends_on "openrtm/omniorb/omniorb-ssl-py38"
   depends_on "doxygen" => :build
 
   def install

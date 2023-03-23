@@ -13,18 +13,24 @@ class Openrtm2PythonPy311 < Formula
 
   bottle do
     root_url "https://github.com/OpenRTM/homebrew-openrtm2/releases/download/2.0.0"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "62aa4f92492aa889b186d612a21b1642ef06c7308fb7882c683f331f736962c0"
     sha256 cellar: :any_skip_relocation, big_sur: "442ef00e26c02c6d6035c65294e8d97514fb105cbd4ed55ccc79c4b8daa5bb9e"
   end
 
-  depends_on "openrtm/omniorb/omniorbpy-py311"
+  depends_on "openrtm/omniorb/omniorb-ssl-py311"
   depends_on "doxygen" => :build
 
   def install
     python3 = "#{Formula["python@3.11"].opt_bin}/python3.11"
-    comp_dir = "#{prefix}/share/openrtm-2.0/components/python3/"
     system python3, "setup.py", "build"
-    system python3, "setup.py", "install", "--prefix=#{prefix}"
-    FileUtils.chmod_R(0755, comp_dir.to_s)
+    # system python3, "setup.py", "install", "--prefix=#{prefix}]"
+
+    # setup.py's prefix option does not work in 3.9 or later 
+    system "mkdir", "TMP"
+    system python3, "setup.py", "install", "--root=./TMP/"
+    bin.install   Dir["TMP/opt/homebrew/bin/*"]
+    share.install Dir["TMP/opt/homebrew/share/*"]
+    lib.install   Dir["TMP/opt/homebrew/lib/*"]
   end
 
   test do
