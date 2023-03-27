@@ -5,7 +5,7 @@ bottle()
     brew update
     brew uninstall $1
     brew install --build-bottle $1
-    brew bottle $1 | tee bottle.txt
+    brew bottle $1 2>&1 | tee bottle.txt
 }
 
 rename()

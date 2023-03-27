@@ -14,7 +14,7 @@ class Openrtm2PythonPy39 < Formula
   bottle do
     root_url "https://github.com/OpenRTM/homebrew-openrtm2/releases/download/2.0.0"
     sha256 cellar: :any_skip_relocation, arm64_ventura: "267ad1c609c49a9f08bcb55610897ac2c5beff568b09f90145af92c0adddc3ee"
-    sha256 cellar: :any_skip_relocation, big_sur: "39bc0194b551f77064105999229b6ce0c880ac06c0b536b92137a6c317527ba9"
+    sha256 cellar: :any_skip_relocation, monterey: "34823d978e3a6b9ae07fb0de4ccea2cb346d2a8e6a85b3db107f7f836cc5b396"
   end
 
   depends_on "openrtm/omniorb/omniorb-ssl-py39"
@@ -22,15 +22,16 @@ class Openrtm2PythonPy39 < Formula
 
   def install
     python3 = "#{Formula["python@3.9"].opt_bin}/python3.9"
+    homebrew_prefix = ENV["HOMEBREW_PREFIX"]
     system python3, "setup.py", "build"
     # system python3, "setup.py", "install", "--prefix=#{prefix}]"
 
     # setup.py's prefix option does not work in 3.9 or later 
     system "mkdir", "TMP"
     system python3, "setup.py", "install", "--root=./TMP/"
-    bin.install   Dir["TMP/opt/homebrew/bin/*"]
-    share.install Dir["TMP/opt/homebrew/share/*"]
-    lib.install   Dir["TMP/opt/homebrew/lib/*"]
+    bin.install   Dir["TMP/#{homebrew_prefix}/bin/*"]
+    share.install Dir["TMP/#{homebrew_prefix}/share/*"]
+    lib.install   Dir["TMP/#{homebrew_prefix}/lib/*"]
   end
 
   test do
