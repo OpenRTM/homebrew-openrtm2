@@ -12,14 +12,14 @@
 class Openrtm2Py38 < Formula
   desc "OpenRTM2: RT-Middleware and OMG RTC implementation in C++ implemented by AIST"
   homepage "https://openrtm.org"
-  url "https://github.com/OpenRTM/OpenRTM-aist/archive/refs/tags/v2.0.0.tar.gz"
-  sha256 "fe0ec792f2a4d4b3667abe6b2471bf844e49026ebe61b623da8309e011f8c206"
+  url "https://github.com/OpenRTM/OpenRTM-aist/archive/refs/tags/v2.0.1.tar.gz"
+  sha256 "be38477abb8ba6c6095a1ed77bee93868eccbc7b2eea0ff12ef8a8f14a67ed02"
   license "LGPL-2.1"
 
   bottle do
-    root_url "https://github.com/OpenRTM/homebrew-openrtm2/releases/download/2.0.0"
+    root_url "https://github.com/OpenRTM/homebrew-openrtm2/releases/download/2.0.1"
+    sha256 cellar: :any, arm64_ventura: "f69aa1a1ae468829a05654bd868c6085d88d2512625a6f0ab79f9d0ad14ccf77"
     sha256 cellar: :any, big_sur: "6681f6468a8f204e065a1a960c44763d8b91f886199b7c6ba9072a9c35aadd65"
-    sha256 cellar: :any, arm64_ventura: "e890c28093c3d647115434305fadb048cc86bf048c149b60b187235525dbc1fd"
   end
 
   depends_on "boost"
