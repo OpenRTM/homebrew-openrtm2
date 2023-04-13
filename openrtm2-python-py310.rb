@@ -12,8 +12,8 @@ class Openrtm2PythonPy310 < Formula
   license "LGPL-2.1"
 
   bottle do
-    root_url "https://github.com/OpenRTM/homebrew-openrtm2/releases/download/2.0.0"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "f43fe34c91d015a3f7da7fe9b96a801f87ae33839b1d45c66b4cc19ebe58086a"
+    root_url "https://github.com/OpenRTM/homebrew-openrtm2/releases/download/2.0.1"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "17a98a7bada4da6b82c23eb482e3f6e8d6fab0853bf13d98d4e737f3a00fc01f"
     sha256 cellar: :any_skip_relocation, monterey: "d0f35a01ce21e8afc54410ff3cb63897f0d4139e36fde72b665cdc25e7ed44c2"
   end
 
