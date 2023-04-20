@@ -1,31 +1,40 @@
 #!/bin/bash
 
-brew_cellar=$(brew --cellar)
-echo $brew_cellar
+build=(
+    "openrtm2-py38  omniorb-ssl-py38"
+    "openrtm2-py39  omniorb-ssl-py39"
+    "openrtm2-py310 omniorb-ssl-py310"
+    "openrtm2-py311 omniorb-ssl-py311"
+    "openrtm2-python-py38  omniorb-ssl-py38"
+    "openrtm2-python-py39  omniorb-ssl-py39"
+    "openrtm2-python-py310 omniorb-ssl-py310"
+    "openrtm2-python-py311 omniorb-ssl-py311"
+)
 
-formulas="
-    openrtm2-python-py38
-    openrtm2-python-py39
-    openrtm2-python-py310
-    openrtm2-python-py311
-"
-
-brew_uninstall()
+cleanup()
 {
-    for f in $formulas; do
-        echo brew uninstall $f
-        brew remove $f
-        brew cleanup -s $f
-    done 
-}
-brew_install()
-{
-    for f in $formulas; do
-        echo brew install $f
-        brew install $f
-        brew unlink $f
+    for ((i=0; ${#build[*]}>$i; i++)) ; do
+        tmp=(${build[$i]})
+        echo "Cleanup: ${tmp[0]}"
+        brew unlink "${tmp[0]}"
+        brew remove --ignore-dependencies "${tmp[0]}"
+        brew cleanup -s "${tmp[0]}"
     done
 }
 
-brew_uninstall
-brew_install
+install()
+{
+    for ((i=0; ${#build[*]}>$i; i++)) ; do
+        tmp=(${build[$i]})
+        echo "Installing: ${tmp[0]}"
+        brew install "${tmp[0]}"
+        brew unlink  "${tmp[0]}"
+    done
+
+}
+
+#-----------
+# main
+#-----------
+cleanup
+install

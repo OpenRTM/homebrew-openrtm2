@@ -14,7 +14,7 @@ class Openrtm2PythonPy310 < Formula
   bottle do
     root_url "https://github.com/OpenRTM/homebrew-openrtm2/releases/download/2.0.1"
     sha256 cellar: :any_skip_relocation, arm64_ventura: "17a98a7bada4da6b82c23eb482e3f6e8d6fab0853bf13d98d4e737f3a00fc01f"
-    sha256 cellar: :any_skip_relocation, monterey: "d0f35a01ce21e8afc54410ff3cb63897f0d4139e36fde72b665cdc25e7ed44c2"
+    sha256 cellar: :any_skip_relocation, monterey: "e6a70001a730bc0781c3ac0ef8db7440e047b6939e14efa91933cbba7cbd3643"
   end
 
   depends_on "openrtm/omniorb/omniorb-ssl-py310"
