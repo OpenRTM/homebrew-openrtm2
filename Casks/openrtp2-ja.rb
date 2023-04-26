@@ -4,7 +4,7 @@
 # Author: Noriaki Ando <Noriaki.Ando@gmail.com>
 # GitHub: https://github.com/OpenRTM/homebrew-openrtm
 #============================================================
-cask "openrtp2-jp" do
+cask "openrtp2-ja" do
   arch arm: "aarch64", intel: "x86_64"
 
   version "2.0.0"
