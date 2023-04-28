@@ -12,14 +12,14 @@ Currently the following versions of OpenRTM-aist are provided.
     - on Python 3.8, 3.9, 3.10, 3.11
   - Java version
     - needs Java8 (adoptopenjdk8) because of CORBA
-  - OpenRTP-aist (RTCBuildler, RTSystemEditor on Eclipse)
+  - OpenRTP2 (RTCBuildler, RTSystemEditor on Eclipse)
     - needs Java8 (adoptopenjdk8) because of CORBA
+  - rtshell
+    - managed by pip
 
 These packages supports the following macOS versions
 
-- Big Sur
-
-Currently, OpenRTM-aist (C++, Java, Python) partially supports the "macOS Big Sur", but OpenRTP does not work on the Big Sur. 
+- Big Sur, Monterey, Ventura
 
 ## How to install
 
@@ -29,8 +29,9 @@ Please install the omniORB bottle "[omniorb-ssl](https://github.com/OpenRTM/home
 ```shell
 $ brew update
 $ brew uninstall omniorb  <--- if you already installed omniorb
-$ brew install openrtm/openrtms/openrtm2-py310 (if you still use Python 3.10)
-$ brew link openrtm2-py10
+$ brew tap openrtm
+$ brew install openrtm2-py311 (if you still use Python 3.11)
+$ brew link openrtm2-py311
 and then please try to run sample components 
 $ /usr/local/share/openrtm-2.0/components/c++/examples/ConsoleInComp
 ```
