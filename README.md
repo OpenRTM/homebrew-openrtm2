@@ -59,14 +59,17 @@ $ /usr/local/share/openrtm-2.0/components/java/ConsoleIn.sh
 ```
 
 ### OpenRTP-aist (Eclipse tool)
-Due to the OpenRTP dependency, the Cask of adoptopenjdk8 will be installed automatically.
+Due to the OpenRTP dependency, the Cask of Eclipse Temurin8 is required.
 
 ```shell
 $ brew update
-$ brew tap openrtm/openrtms
-$ brew install openrtp
-note: "brew cask" command is obsolete.
-$ open -a OpenRTP
+$ brew tap openrtm/openrtm2
+$ brew install --cask homebrew/cask-versions/temurin8   <- Installing Java8
+$ brew install openrtp2     <- English version
+$ brew install openrtp2-ja  <- Japanese version
+$ open -a OpenRTP2-en
+or
+$ open -a OpenRTP2-ja
 ```
 or launch OpenRTP from "Applications".
 
