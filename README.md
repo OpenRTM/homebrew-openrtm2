@@ -29,7 +29,7 @@ Please install the omniORB bottle "[omniorb-ssl](https://github.com/OpenRTM/home
 ```shell
 $ brew update
 $ brew uninstall omniorb  <--- if you already installed omniorb
-$ brew tap openrtm
+$ brew tap openrtm/openrtm2
 $ brew install openrtm2-py311 (if you still use Python 3.11)
 $ brew link openrtm2-py311
 and then please try to run sample components 
@@ -40,8 +40,9 @@ $ /usr/local/share/openrtm-2.0/components/c++/examples/ConsoleInComp
 Please install the omniORBpy bottle "[omniorbpy](https://github.com/OpenRTM/homebrew-omniorb)" provided us. This package is automatically installed as a dependency.
 ```shell
 $ brew update
-$ brew install openrtm/openrtms/openrtm2-python-py310 (if you still use Python 3.10)
-$ brew link openrtm-aist-python
+$ brew tap openrtm/openrtm2
+$ brew install openrtm2-python-py311 (if you still use Python 3.11)
+$ brew link openrtm2-python-py311
 and then please try to run sample components
 $ python3 /usr/local/share/openrtm-2.0/components/python3/SimpleIO/ConsoleIn.py 
 ```

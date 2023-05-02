@@ -18,8 +18,8 @@ class Openrtm2Py38 < Formula
 
   bottle do
     root_url "https://github.com/OpenRTM/homebrew-openrtm2/releases/download/2.0.1"
-    sha256 cellar: :any, arm64_ventura: "f69aa1a1ae468829a05654bd868c6085d88d2512625a6f0ab79f9d0ad14ccf77"
-    sha256 cellar: :any, monterey: "ed116943744f4c9ee0272b135f1e83de094742ee301c8d7dc4a1f133f5af6a32"
+    sha256 cellar: :any, arm64_ventura: "f60c9aa51770d993a086ab78b3afebe2fff3393cd80053e9898237bba588c559"
+    sha256 cellar: :any, monterey:      "ed116943744f4c9ee0272b135f1e83de094742ee301c8d7dc4a1f133f5af6a32"
   end
 
   depends_on "boost"
@@ -27,7 +27,7 @@ class Openrtm2Py38 < Formula
   depends_on "openrtm/omniorb/omniorb-ssl-py38"
 
   def install
-    system "cmake", "-S", ".", "-B", "build", *std_cmake_args
+    system "cmake", "-S", ".", "-B", "build", *std_cmake_args, "-DCMAKE_INSTALL_RPATH=${CMAKE_INSTALL_PREFIX}/lib"
     system "cmake", "--build", "build"
     system "cmake", "--install", "build"
   end

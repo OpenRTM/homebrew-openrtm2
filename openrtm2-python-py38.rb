@@ -13,8 +13,8 @@ class Openrtm2PythonPy38 < Formula
 
   bottle do
     root_url "https://github.com/OpenRTM/homebrew-openrtm2/releases/download/2.0.1"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "8a95b23e34f48976809e94456aa78b871abd49718fc02bff34a52a18f73ffaa4"
-    sha256 cellar: :any_skip_relocation, monterey: "5cc4b054bffee2d19740fc57756e0438c2a43c3b4b9ccdf7003be07a047be563"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "c22f24e9fa7a8282cc5eb33b85009165ec45bc37ce0a05bfc73722d154cb10d7"
+    sha256 cellar: :any_skip_relocation, monterey:      "5cc4b054bffee2d19740fc57756e0438c2a43c3b4b9ccdf7003be07a047be563"
   end
 
   depends_on "openrtm/omniorb/omniorb-ssl-py38"
@@ -22,10 +22,18 @@ class Openrtm2PythonPy38 < Formula
 
   def install
     python3 = "#{Formula["python@3.8"].opt_bin}/python3.8"
-    comp_dir = "#{prefix}/share/openrtm-2.0/components/python3/"
+    example_dir = "#{prefix}/share/openrtm-2.0/components/python3/"
     system python3, "setup.py", "build"
     system python3, "setup.py", "install", "--prefix=#{prefix}"
-    FileUtils.chmod_R(0755, comp_dir.to_s)
+
+    Find.find(example_dir) do |path|
+      if File.file?(path) && path.end_with?('.py')
+        File.chmod(0755, path)
+      end
+      if File.file?(path) && path.end_with?('.sh')
+        File.chmod(0755, path)
+      end
+    end
   end
 
   test do

@@ -18,8 +18,8 @@ class Openrtm2Py310 < Formula
 
   bottle do
     root_url "https://github.com/OpenRTM/homebrew-openrtm2/releases/download/2.0.1"
-    sha256 cellar: :any, arm64_ventura: "b7daa53920d381d7c4c18274353000976edd488915c15a229c95d6c25ea90564"
-    sha256 cellar: :any, monterey: "e067e345d365243d06b7f84b4c5cd3cb288e9db3e58f3daaaa076686b39f8f41"
+    sha256 cellar: :any, arm64_ventura: "b7037f7aa726b1c10fe71f43b4d23aa5d667fc535d01cf6e0e9e0067e555ed54"
+    sha256 cellar: :any, monterey:      "e067e345d365243d06b7f84b4c5cd3cb288e9db3e58f3daaaa076686b39f8f41"
   end
 
   depends_on "boost"
@@ -27,7 +27,7 @@ class Openrtm2Py310 < Formula
   depends_on "openrtm/omniorb/omniorb-ssl-py310"
 
   def install
-    system "cmake", "-S", ".", "-B", "build", *std_cmake_args
+    system "cmake", "-S", ".", "-B", "build", *std_cmake_args, "-DCMAKE_INSTALL_RPATH=${CMAKE_INSTALL_PREFIX}/lib"
     system "cmake", "--build", "build"
     system "cmake", "--install", "build"
   end
