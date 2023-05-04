@@ -14,7 +14,7 @@ class Openrtm2PythonPy38 < Formula
   bottle do
     root_url "https://github.com/OpenRTM/homebrew-openrtm2/releases/download/2.0.1"
     sha256 cellar: :any_skip_relocation, arm64_ventura: "c22f24e9fa7a8282cc5eb33b85009165ec45bc37ce0a05bfc73722d154cb10d7"
-    sha256 cellar: :any_skip_relocation, monterey:      "5cc4b054bffee2d19740fc57756e0438c2a43c3b4b9ccdf7003be07a047be563"
+    sha256 cellar: :any_skip_relocation, monterey:      "6cab89a428ce326591094471d8ac6195f58624f2974a9cb13948a1c970cb9e4c"
   end
 
   depends_on "openrtm/omniorb/omniorb-ssl-py38"

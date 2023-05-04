@@ -19,7 +19,7 @@ class Openrtm2Py38 < Formula
   bottle do
     root_url "https://github.com/OpenRTM/homebrew-openrtm2/releases/download/2.0.1"
     sha256 cellar: :any, arm64_ventura: "f60c9aa51770d993a086ab78b3afebe2fff3393cd80053e9898237bba588c559"
-    sha256 cellar: :any, monterey:      "ed116943744f4c9ee0272b135f1e83de094742ee301c8d7dc4a1f133f5af6a32"
+    sha256 cellar: :any, monterey:      "73cf16e2e1743de1553219d90822d6b1f2141875b9b8544cf566f3d7565882b3"
   end
 
   depends_on "boost"
