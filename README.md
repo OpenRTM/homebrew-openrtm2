@@ -42,10 +42,20 @@ Please install the omniORBpy bottle "[omniorbpy](https://github.com/OpenRTM/home
 $ brew update
 $ brew tap openrtm/openrtm2
 $ brew install openrtm2-python-py311 (if you still use Python 3.11)
+
+To enable openrtm2-python environment, you have to activate
+other dependent pakcages.
+$ brew link python@3.11
+$ brew link omniorb-ssl-py311
 $ brew link openrtm2-python-py311
 and then please try to run sample components
-$ python3 /usr/local/share/openrtm-2.0/components/python3/SimpleIO/ConsoleIn.py 
+$ python3.11 /usr/local/share/openrtm-2.0/components/python3/SimpleIO/ConsoleIn.py
+To execute python RTC directry, please make python3 symbolic link to python3.11.
+$ cd /opt/homebrew/bin
+$ ln -s python3.11 python3
 ```
+System's deefault python3 exists in /usr/bin/python3. Symbolic linked python3 
+should be appeared in your command search PATH.
 
 ### OpenRTM-aist (Java)
 Java8 is necesarry for OpenRTM-aist-Java and OpenRTP. The adoptopenjdk8 will be installed automatically. 
