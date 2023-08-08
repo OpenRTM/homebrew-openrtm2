@@ -1,0 +1,13 @@
+diff -ru OpenRTM-aist-2.0.2/CMakeLists.txt OpenRTM-aist-2.0.2.new/CMakeLists.txt
+--- OpenRTM-aist-2.0.2/CMakeLists.txt	2024-06-06 15:46:03
++++ OpenRTM-aist-2.0.2.new/CMakeLists.txt	2024-10-22 12:15:48
+@@ -115,7 +115,7 @@
+ 	set(INSTALL_RTM_ETC_DIR ${CMAKE_INSTALL_SYSCONFDIR})
+ 	set(INSTALL_RTM_SHARE_DIR ${CMAKE_INSTALL_DATAROOTDIR})
+ 	if(${CMAKE_CXX_COMPILER_VERSION} VERSION_GREATER_EQUAL 12.0.0)
+-		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-aggressive-loop-optimizations --param max-inline-insns-single=1000 --param inline-unit-growth=1000 --param large-function-growth=2000")
++		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --param max-inline-insns-single=1000 --param inline-unit-growth=1000 --param large-function-growth=2000")
+ 	endif()
+ else()
+ 	set(INSTALL_RTM_SCRIPT_DIR lib/openrtm-${RTM_MAJOR_VERSION}.${RTM_MINOR_VERSION}/py_helper)
+Only in OpenRTM-aist-2.0.2.new/etc: rtc.conf.sample2

@@ -12,8 +12,8 @@
 class Openrtm2Py39 < Formula
   desc "OpenRTM2: RT-Middleware and OMG RTC implementation in C++ implemented by AIST"
   homepage "https://openrtm.org"
-  url "https://github.com/OpenRTM/OpenRTM-aist/archive/refs/tags/v2.0.1.tar.gz"
-  sha256 "be38477abb8ba6c6095a1ed77bee93868eccbc7b2eea0ff12ef8a8f14a67ed02"
+  url "https://github.com/OpenRTM/OpenRTM-aist/archive/refs/tags/v2.0.2.tar.gz"
+  sha256 "ebb15105f4400dd70e603c471feb207eef6cf3396f1f30a70601c96329cb1ecf"
   license "LGPL-2.1"
 
   bottle do
@@ -25,6 +25,11 @@ class Openrtm2Py39 < Formula
   depends_on "boost"
   depends_on "cmake" => :build
   depends_on "openrtm/omniorb/omniorb-ssl-py39"
+
+  patch do
+    url "https://raw.githubusercontent.com/OpenRTM/homebrew-openrtm2/master/Patches/CMakeList.txt.diff"
+    sha256 "d0dc674e97682a16781c4a9c69dc5fe6809c5c55b8f47c0b627c97c7efc78506"
+  end
 
   def install
     system "cmake", "-S", ".", "-B", "build", *std_cmake_args, "-DCMAKE_INSTALL_RPATH=${CMAKE_INSTALL_PREFIX}/lib"
