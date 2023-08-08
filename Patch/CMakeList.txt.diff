@@ -1,6 +1,6 @@
-diff -ru OpenRTM-aist-2.0.2/CMakeLists.txt OpenRTM-aist-2.0.2.new/CMakeLists.txt
---- OpenRTM-aist-2.0.2/CMakeLists.txt	2024-06-06 15:46:03
-+++ OpenRTM-aist-2.0.2.new/CMakeLists.txt	2024-10-22 12:15:48
+diff -ru a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2024-06-06 15:46:03
++++ b/CMakeLists.txt	2024-10-22 12:15:48
 @@ -115,7 +115,7 @@
  	set(INSTALL_RTM_ETC_DIR ${CMAKE_INSTALL_SYSCONFDIR})
  	set(INSTALL_RTM_SHARE_DIR ${CMAKE_INSTALL_DATAROOTDIR})
@@ -10,4 +10,4 @@ diff -ru OpenRTM-aist-2.0.2/CMakeLists.txt OpenRTM-aist-2.0.2.new/CMakeLists.txt
  	endif()
  else()
  	set(INSTALL_RTM_SCRIPT_DIR lib/openrtm-${RTM_MAJOR_VERSION}.${RTM_MINOR_VERSION}/py_helper)
-Only in OpenRTM-aist-2.0.2.new/etc: rtc.conf.sample2
+Only in b/etc: rtc.conf.sample2

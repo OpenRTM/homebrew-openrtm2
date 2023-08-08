@@ -25,9 +25,9 @@ class Openrtm2Py39 < Formula
   depends_on "boost"
   depends_on "cmake" => :build
   depends_on "openrtm/omniorb/omniorb-ssl-py39"
-
+  https://github.com/OpenRTM/homebrew-openrtm2/blob/main/Patch/CMakeList.txt.diff
   patch do
-    url "https://raw.githubusercontent.com/OpenRTM/homebrew-openrtm2/master/Patches/CMakeList.txt.diff"
+    url "https://raw.githubusercontent.com/OpenRTM/homebrew-openrtm2/refs/heads/main/Patch/CMakeList.txt.diff"
     sha256 "d0dc674e97682a16781c4a9c69dc5fe6809c5c55b8f47c0b627c97c7efc78506"
   end
 
