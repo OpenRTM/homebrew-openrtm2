@@ -1,5 +1,8 @@
 #!/bin/bash
 
+brew list | grep omniorb-ssl | awk '{printf("brew remove %s\n",$1);}' | sh
+brew list | grep openrtm2 | awk '{printf("brew remove %s\n",$1);}' | sh
+
 bottle()
 {
     brew update
