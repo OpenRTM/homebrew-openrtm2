@@ -1,0 +1,38 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 2804efd..d42a32d 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,5 +1,31 @@
+ [build-system]
+-requires = ["RTM-Python-build-idl@git+https://github.com/OpenRTM/RTM-Python-build-idl", "wheel", "setuptools"]
++requires = ["wheel", "setuptools"]
+ build-backend = "setuptools.build_meta"
+ 
++[project]
++requires-python = ">=3.8"
++name = "OpenRTM-aist-Python"
++version = "2.0.2"
++description = "OpenRTM-aist python bindings"
++readme = "README.md"
++license = { file = "COPYRIGHT" }
++authors = [
++    { name = "Shinji Kurihara and Noriaki Ando", email = "n-ando@aist.go.jp" }
++]
++classifiers = [
++    "Programming Language :: Python :: 3",
++    "License :: OSI Approved :: GNU Lesser General Public License v2 or later (LGPLv2+)",
++    "Operating System :: OS Independent",
++    "Framework :: Robot Framework",
++    "Framework :: Robot Framework :: Library",
++    "Framework :: Robot Framework :: Tool",
++    "Topic :: Communications",
++    "Topic :: Software Development :: Object Brokering :: CORBA"
++]
++
++[project.optional-dependencies]
++dev = [
++    "setuptools"
++]
++
+ [tool.setuptools_scm]
+

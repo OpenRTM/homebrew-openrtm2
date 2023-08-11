@@ -1,0 +1,70 @@
+diff --git a/setup.py b/setup.py
+index d8213ce..f293d07 100644
+--- a/setup.py
++++ b/setup.py
+@@ -2,9 +2,60 @@
+ # -*- Python -*-
+ # -*- coding: utf-8 -*-
+ 
+-import setuptools
+-from setuptools.command.build import build
++#import setuptools
++#from setuptools.command.build import build
++#
++#build.sub_commands.append(('build_idl', None))
++#
++#setuptools.setup()
+ 
+-build.sub_commands.append(('build_idl', None))
++import os
++import subprocess
++from setuptools import setup
++from setuptools.command.build_py import build_py as _build_py
++from setuptools import setup, find_namespace_packages
+ 
+-setuptools.setup()
++# Collecting files and directories to be installed properly
++def find_data_files(src_dir, dest_dir):
++    data_files = []
++    for root, dirs, files in os.walk(src_dir):
++        install_path = os.path.join(dest_dir, os.path.relpath(root, src_dir))
++        file_paths = [os.path.join(root, file) for file in files]
++        data_files.append((install_path, file_paths))
++    return data_files
++
++# Custom build command (Coompiling IDL files)
++class BuildIDL(_build_py):
++    def run(self):
++        # Defining IDL directories
++        idl_dir = os.path.join(os.path.dirname(__file__), 'OpenRTM_aist/RTM_IDL')
++        idl_dirs = [
++            os.path.join(os.path.dirname(__file__), 'OpenRTM_aist', 'RTM_IDL'),
++            os.path.join(os.path.dirname(__file__), 'OpenRTM_aist', 'RTM_IDL', 'device_interfaces'),
++            os.path.join(os.path.dirname(__file__), 'OpenRTM_aist', 'RTM_IDL', 'ext'),
++            os.path.join(os.path.dirname(__file__), 'OpenRTM_aist', 'ext', 'sdo', 'observer'),
++            os.path.join(os.path.dirname(__file__), 'OpenRTM_aist', 'ext', 'fsm4rtc_observer'),
++            os.path.join(os.path.dirname(__file__), 'OpenRTM_aist', 'examples', 'SimpleService'),
++            os.path.join(os.path.dirname(__file__), 'OpenRTM_aist', 'examples', 'AutoTest'),
++        ]
++        # IDL compiling for each directories
++        for idl_dir in idl_dirs:
++            for root, dirs, files in os.walk(idl_dir):
++                for file in files:
++                    if file.endswith(".idl"):
++                        idl_path = os.path.join(root, file)
++                        print(f"Processing {file} with omniidl")
++                        subprocess.run(["omniidl", "-bpython", "-I", "OpenRTM_aist/RTM_IDL", idl_path], check=True)
++        super().run()
++
++example_data_files = find_data_files('OpenRTM_aist/examples', 'share/openrtm-2.0/components/python3')
++
++setup(
++    name="openrtm2-python",
++    version="2.0.2",
++    packages=find_namespace_packages(include=["OpenRTM_aist.*"]),
++    cmdclass={
++        'build_py': BuildIDL,  # Custom build command
++    },
++    data_files=example_data_files,
++)
+
