@@ -1,8 +1,8 @@
 diff --git a/setup.py b/setup.py
-index d8213ce..f293d07 100644
+index d8213ce..4f3f5ea 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -2,9 +2,60 @@
+@@ -2,9 +2,59 @@
  # -*- Python -*-
  # -*- coding: utf-8 -*-
  
@@ -61,10 +61,8 @@ index d8213ce..f293d07 100644
 +setup(
 +    name="openrtm2-python",
 +    version="2.0.2",
-+    packages=find_namespace_packages(include=["OpenRTM_aist.*"]),
 +    cmdclass={
 +        'build_py': BuildIDL,  # Custom build command
 +    },
 +    data_files=example_data_files,
 +)
-
