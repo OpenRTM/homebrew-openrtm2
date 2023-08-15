@@ -19,4 +19,4 @@ index d8213ce..651af14 100644
 +
 +setuptools.setup(
 +    data_files=example_data_files,
-+)diff --git a/setup.py b/setup.py
++)
