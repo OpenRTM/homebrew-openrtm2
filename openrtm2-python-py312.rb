@@ -4,12 +4,12 @@
 # Author: Noriaki Ando <Noriaki.Ando@gmail.com>
 # GitHub: https://github.com/OpenRTM/homebrew-openrtm2
 #
-# This is the formula for OpenRTM-aist (Python) for python 3.11.
-# To use this formula/bottle, switch python into python 3.11.
+# This is the formula for OpenRTM-aist (Python) for python 3.12.
+# To use this formula/bottle, switch python into python 3.12.
 # $ brew unlink python3 (unlink python 3.X)
-# $ brew link python@3.11
+# $ brew link python@3.12
 #============================================================
-class Openrtm2PythonPy311 < Formula
+class Openrtm2PythonPy312 < Formula
   desc "OpenRTM-aist: RT-Middleware and OMG RTC implementation in Python implemented by AIST"
   homepage "https://openrtm.org"
   url "https://github.com/OpenRTM/OpenRTM-aist-Python/archive/refs/tags/v2.0.2.tar.gz"
@@ -22,8 +22,8 @@ class Openrtm2PythonPy311 < Formula
 #    sha256 cellar: :any_skip_relocation, monterey:      "5e8681a64342e122d1403c5796c5691e78342778746b3d4d9851668d054fb805"
   end
 
-  depends_on "python@3.11"
-  depends_on "openrtm/omniorb/omniorb-ssl-py311"
+  depends_on "python@3.12"
+  depends_on "openrtm/omniorb/omniorb-ssl-py312"
   depends_on "doxygen" => :build
 
   patch do
@@ -32,7 +32,7 @@ class Openrtm2PythonPy311 < Formula
   end
 
   def install
-    python3 = "#{Formula["python@3.11"].opt_bin}/python3.11"
+    python3 = "#{Formula["python@3.12"].opt_bin}/python3.12"
 
     system python3, "-m", "pip", "install", "--break-system-packages", "build"
     system python3, "-m", "pip", "install", "--break-system-packages", "setuptools"

@@ -3,6 +3,11 @@
 #
 # Author: Noriaki Ando <Noriaki.Ando@gmail.com>
 # GitHub: https://github.com/OpenRTM/homebrew-openrtm2
+#
+# This is the formula for OpenRTM-aist (Python) for python 3.10.
+# To use this formula/bottle, switch python into python 3.10.
+# $ brew unlink python3 (unlink python 3.X)
+# $ brew link python@3.10
 #============================================================
 class Openrtm2PythonPy310 < Formula
   desc "OpenRTM-aist: RT-Middleware and OMG RTC implementation in Python implemented by AIST"
@@ -17,30 +22,27 @@ class Openrtm2PythonPy310 < Formula
 #    sha256 cellar: :any_skip_relocation, monterey:      "5e8681a64342e122d1403c5796c5691e78342778746b3d4d9851668d054fb805"
   end
 
+  depends_on "python@3.10"
   depends_on "openrtm/omniorb/omniorb-ssl-py310"
   depends_on "doxygen" => :build
 
   patch do
-    url "https://raw.githubusercontent.com/OpenRTM/homebrew-openrtm2/refs/heads/main/Patch/pyproject.toml.diff"
-    sha256 "ac2be060ff675603be2665ccc9e490ff14525799b8a5d8f185358324877e9710"
-  end
-  patch do
     url "https://raw.githubusercontent.com/OpenRTM/homebrew-openrtm2/refs/heads/main/Patch/setup.py.diff"
-    sha256 "bab4793ba437663cb43d2ae50b2bc9f56409296883bee6b6319efe80dc6ba708"
+    sha256 "67c8a35cdac497f00e20f2fb4ca1d1ac138ffb6f1b3c6f75c4bea19f53f41a5a"
   end
 
   def install
     python3 = "#{Formula["python@3.10"].opt_bin}/python3.10"
-    homebrew_prefix = ENV["HOMEBREW_PREFIX"]
-#    system python3, "setup.py", "build"
-    # system python3, "setup.py", "install", "--prefix=#{prefix}]"
 
-    # setup.py's prefix option does not work in 3.10 or later 
-#    system "mkdir", "TMP"
     system python3, "-m", "pip", "install", "--break-system-packages", "build"
     system python3, "-m", "pip", "install", "--break-system-packages", "setuptools"
     system python3, "-m", "build"
-    example_dir="OpenRTM_aist/examples/"
+    system python3, "-m", "pip",  "install",\
+                    *std_pip_args(build_isolation: true),\
+                    "dist/OpenRTM_aist_Python-2.0.2-py3-none-any.whl"
+
+    # add executable permission to example scripts
+    example_dir="#{prefix}/share/openrtm-2.0"
     Find.find(example_dir) do |path|
       if File.file?(path) && path.end_with?('.py')
         File.chmod(0755, path)
@@ -49,27 +51,6 @@ class Openrtm2PythonPy310 < Formula
         File.chmod(0755, path)
       end
     end
-    system python3, "-m", "pip",  "install",\
-                    *std_pip_args(build_isolation: true),\
-                    "dist/OpenRTM_aist_Python-2.0.2-py3-none-any.whl"
-#    system python3, "-m", "pip",  "install", "--no-index",\
-#                    "--prefix=#{homebrew_prefix}",\
-#                    "dist/OpenRTM_aist_Python-2.0.2-py3-none-any.whl"
-#    system "whoami"
-#    example_dir="TMP/#{homebrew_prefix}/share/"
-#    Find.find(example_dir) do |path|
-#      if File.file?(path) && path.end_with?('.py')
-#        File.chmod(0755, path)
-#      end
-#      if File.file?(path) && path.end_with?('.sh')
-#        File.chmod(0755, path)
-#      end
-#    end
-#    
-#    # Installing target directories
-#    bin.install   Dir["TMP/#{homebrew_prefix}/bin/*"]
-#    share.install Dir["TMP/#{homebrew_prefix}/share/*"]
-#    lib.install   Dir["TMP/#{homebrew_prefix}/lib/*"]
   end
 
   test do

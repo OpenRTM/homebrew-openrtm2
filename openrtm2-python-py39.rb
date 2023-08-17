@@ -3,6 +3,11 @@
 #
 # Author: Noriaki Ando <Noriaki.Ando@gmail.com>
 # GitHub: https://github.com/OpenRTM/homebrew-openrtm2
+#
+# This is the formula for OpenRTM-aist (Python) for python 3.9.
+# To use this formula/bottle, switch python into python 3.9.
+# $ brew unlink python3 (unlink python 3.X)
+# $ brew link python@3.9
 #============================================================
 class Openrtm2PythonPy39 < Formula
   desc "OpenRTM-aist: RT-Middleware and OMG RTC implementation in Python implemented by AIST"
@@ -21,10 +26,6 @@ class Openrtm2PythonPy39 < Formula
   depends_on "openrtm/omniorb/omniorb-ssl-py39"
   depends_on "doxygen" => :build
 
-#  patch do
-#    url "https://raw.githubusercontent.com/OpenRTM/homebrew-openrtm2/refs/heads/main/Patch/pyproject.toml.diff"
-#    sha256 "ac2be060ff675603be2665ccc9e490ff14525799b8a5d8f185358324877e9710"
-#  end
   patch do
     url "https://raw.githubusercontent.com/OpenRTM/homebrew-openrtm2/refs/heads/main/Patch/setup.py.diff"
     sha256 "67c8a35cdac497f00e20f2fb4ca1d1ac138ffb6f1b3c6f75c4bea19f53f41a5a"
