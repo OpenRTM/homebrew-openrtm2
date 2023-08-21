@@ -24,6 +24,7 @@ class Openrtm2Py312 < Formula
 
   depends_on "boost"
   depends_on "cmake" => :build
+  depends_on "pkg-config" => :build
   depends_on "openrtm/omniorb/omniorb-ssl-py312"
 
   patch do

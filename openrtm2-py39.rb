@@ -24,6 +24,7 @@ class Openrtm2Py39 < Formula
 
   depends_on "boost"
   depends_on "cmake" => :build
+  depends_on "pkg-config" => :build
   depends_on "openrtm/omniorb/omniorb-ssl-py39"
 
   patch do
