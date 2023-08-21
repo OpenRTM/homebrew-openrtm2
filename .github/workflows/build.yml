@@ -33,32 +33,32 @@ jobs:
             *.tar.gz
             *.sha256
 
-  build-arm64:
-    name: OpenRTM C++ Formula build on macOS (ARM64)
-    runs-on: macos-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Homebrew
-        run: |
-          echo "Setting up Homebrew for Apple Silicon"
-          echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
-          eval "$(/opt/homebrew/bin/brew shellenv)"
-
-      - name: Install dependencies
-        run: |
-          brew tap openrtm/openrtm2
-
-      - name: Build project
-        run: |
-          bash build.sh
-
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: openrtm2-arm64
-          path: |
-            *.tar.gz
-            *.sha256
+＃  build-arm64:
+＃    name: OpenRTM C++ Formula build on macOS (ARM64)
+＃    runs-on: macos-latest
+＃
+＃    steps:
+＃      - name: Checkout code
+＃        uses: actions/checkout@v4
+＃
+＃      - name: Set up Homebrew
+＃        run: |
+＃          echo "Setting up Homebrew for Apple Silicon"
+＃          echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
+＃          eval "$(/opt/homebrew/bin/brew shellenv)"
+＃
+＃      - name: Install dependencies
+＃        run: |
+＃          brew tap openrtm/openrtm2
+＃
+＃      - name: Build project
+＃        run: |
+＃          bash build.sh
+＃
+＃      - name: Upload artifacts
+＃        uses: actions/upload-artifact@v4
+＃        with:
+＃          name: openrtm2-arm64
+＃          path: |
+＃            *.tar.gz
+＃            *.sha256
