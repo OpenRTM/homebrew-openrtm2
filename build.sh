@@ -10,6 +10,7 @@ build=(
 
 bottle()
 {
+    rm "$(brew --prefix)/var/homebrew/locks/*.lock"
     brew update
     installed=`brew info $1 | grep Installed`
     if test "x" != "x$installed" ; then
@@ -30,6 +31,7 @@ rename()
 
 bottling()
 {
+    rm "$(brew --prefix)/var/homebrew/locks/*.lock"
     echo "Installing " $2
     brew install $2
     brew link $2
@@ -52,6 +54,7 @@ cleanup()
              continue
         fi
         echo "Cleanup: ${tmp[0]}"
+        rm "$(brew --prefix)/var/homebrew/locks/*.lock"
         brew unlink "${tmp[0]}"
         brew remove --ignore-dependencies "${tmp[0]}"
         brew cleanup -s "${tmp[0]}"
