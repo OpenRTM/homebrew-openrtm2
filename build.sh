@@ -31,6 +31,7 @@ rename()
 
 bottling()
 {
+    brew cleanup
     rm "$(brew --prefix)/var/homebrew/locks/*.lock"
     echo "Installing " $2
     brew install $2
@@ -54,6 +55,7 @@ cleanup()
              continue
         fi
         echo "Cleanup: ${tmp[0]}"
+        brew cleanup
         rm "$(brew --prefix)/var/homebrew/locks/*.lock"
         brew unlink "${tmp[0]}"
         brew remove --ignore-dependencies "${tmp[0]}"
