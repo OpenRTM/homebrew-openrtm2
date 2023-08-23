@@ -50,7 +50,7 @@ Java8 is necesarry for OpenRTM-aist-Java and OpenRTP. The adoptopenjdk8 will be 
 ```shell
 $ brew update
 $ brew cask install adoptopenjdk8
-$ brew install openrtm/openrtms/openrtm2-java
+$ brew install openrtm/openrtm2/openrtm2-java
 $ cat /usr/local/etc/profile.d/openrtm-aist-java.sh >> ~/.profile
 $ source ~/.profile
 and then please try to run sample components
