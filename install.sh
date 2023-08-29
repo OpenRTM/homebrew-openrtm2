@@ -4,7 +4,9 @@ build=(
     "openrtm2-py39  omniorb-ssl-py39"
     "openrtm2-py310 omniorb-ssl-py310"
     "openrtm2-py311 omniorb-ssl-py311"
-    "openrtm2-python-py38  omniorb-ssl-py38"
+    "openrtm2-py312 omniorb-ssl-py312"
+    "openrtm2-py313 omniorb-ssl-py313"
+
     "openrtm2-python-py39  omniorb-ssl-py39"
     "openrtm2-python-py310 omniorb-ssl-py310"
     "openrtm2-python-py311 omniorb-ssl-py311"
