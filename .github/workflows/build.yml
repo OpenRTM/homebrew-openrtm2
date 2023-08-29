@@ -1,6 +1,20 @@
 name: OpenRTM C++ Formula Build
 
-on: [push]
+on:
+  push:
+    paths:
+      - "openrtm2-py[0-9]*.rb"
+      - "build.sh"
+      - ".github/workflows/build.yaml"
+    paths-ignore:
+      - "openrtm2-python-py*.rb"
+  pull_request:
+    paths:
+      - "openrtm2-py[0-9]*.rb"
+      - "build.sh"
+      - ".github/workflows/build.yaml"
+    paths-ignore:
+      - "openrtm2-python-py*.rb"
 
 jobs:
   build-x86_64:
