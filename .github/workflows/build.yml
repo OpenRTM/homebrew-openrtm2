@@ -1,6 +1,7 @@
 name: OpenRTM C++ Formula Build
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - "openrtm2-py[0-9]*.rb"
