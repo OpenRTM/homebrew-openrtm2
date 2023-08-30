@@ -12,7 +12,6 @@ on:
       - "build.sh"
       - ".github/workflows/build.yaml"
 
-
 jobs:
   build-x86_64:
     name: OpenRTM C++ Formula build on macOS (x86_64)
