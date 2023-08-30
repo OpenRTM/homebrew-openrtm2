@@ -1,4 +1,7 @@
 #!/bin/bash
+#
+# OpenRTM-aist C++  build and bottling script
+#
 
 build=(
     "openrtm2-py39  omniorb-ssl-py39"
