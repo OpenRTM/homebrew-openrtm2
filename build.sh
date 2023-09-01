@@ -36,8 +36,8 @@ bottling()
 {
     brew cleanup
     echo "Cleanup environment"
-    brew list | grep omniorb | awk '{printf("brew uninstall %s",$1);}' | bash
-    brew list | grep openrtm | awk '{printf("brew uninstall %s",$1);}' | bash
+    brew list | grep omniorb | awk '{printf("brew uninstall %s\n",$1);}' | bash
+    brew list | grep openrtm | awk '{printf("brew uninstall %s\n",$1);}' | bash
     rm "$(brew --prefix)/var/homebrew/locks/*.lock"
     echo "Installing " $2
     brew install $2
