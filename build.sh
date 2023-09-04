@@ -5,10 +5,10 @@
 
 build=(
     "openrtm2-py39  omniorb-ssl-py39"
-    "openrtm2-py310 omniorb-ssl-py310"
-    "openrtm2-py311 omniorb-ssl-py311"
-    "openrtm2-py312 omniorb-ssl-py312"
-    "openrtm2-py313 omniorb-ssl-py313"
+#    "openrtm2-py310 omniorb-ssl-py310"
+#    "openrtm2-py311 omniorb-ssl-py311"
+#    "openrtm2-py312 omniorb-ssl-py312"
+#    "openrtm2-py313 omniorb-ssl-py313"
 )
 
 bottle()
@@ -36,8 +36,8 @@ bottling()
 {
     brew cleanup
     echo "Cleanup environment"
-    brew list | grep omniorb | awk '{printf("brew uninstall %s\n",$1);}' | bash
-    brew list | grep openrtm | awk '{printf("brew uninstall %s\n",$1);}' | bash
+    brew list | grep omniorb | awk '{printf("brew uninstall --ignore-dependencies %s\n",$1);}' | bash
+    brew list | grep openrtm | awk '{printf("brew uninstall --ignore-dependencies %s\n",$1);}' | bash
     rm "$(brew --prefix)/var/homebrew/locks/*.lock"
     echo "Installing " $2
     brew install $2
@@ -47,10 +47,10 @@ bottling()
     rename
     echo "unlinking " $1
     brew unlink $1
-    brew remove $1
+    brew remove --ignore-dependencies  $1
     echo "unlinking " $2
     brew unlink $2
-    brew remove $2
+    brew remove --ignore-dependencies  $2
 }
 
 cleanup()
@@ -75,7 +75,7 @@ build()
 {
     for ((i=0; ${#build[*]}>$i; i++)) ; do
         tmp=(${build[$i]})
-        echo "bottling( ${tmp[0]} ${tmp[1]})"
+        echo "bottling ( ${tmp[0]} ${tmp[1]} )"
         bottling ${tmp[0]} ${tmp[1]}
     done
 }
