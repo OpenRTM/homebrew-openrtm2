@@ -14,39 +14,9 @@ on:
       - ".github/workflows/buildpy.yaml"
 
 jobs:
-#  buildpy-x86_64:
-#    name: OpenRTM Python Formula build on macOS (x86_64)
-#    runs-on: self-hosted
-#
-#    steps:
-#      - name: Checkout code
-#        uses: actions/checkout@v4
-#
-#      - name: Set up Homebrew
-#        run: |
-#          echo "Setting up Homebrew for Intel"
-#          echo 'eval "$(/usr/local/bin/brew shellenv)"' >> $HOME/.zprofile
-#          eval "$(/usr/local/bin/brew shellenv)"
-#      
-#      - name: Install dependencies
-#        run: |
-#          brew tap openrtm/openrtm2
-#
-#      - name: Build project
-#        run: |
-#          bash buildpy.sh
-#      
-#      - name: Upload artifacts
-#        uses: actions/upload-artifact@v4
-#        with:
-#          name: openrtm2-python-x86_64
-#          path: |
-#            *.tar.gz
-#            *.sha256
-
-  buildpy-arm64:
-    name: OpenRTM Python Formula build on macOS (ARM64)
-    runs-on: macos-latest
+  buildpy-x86_64:
+    name: OpenRTM Python Formula build on macOS (x86_64)
+    runs-on: self-hosted
 
     steps:
       - name: Checkout code
@@ -54,10 +24,10 @@ jobs:
 
       - name: Set up Homebrew
         run: |
-          echo "Setting up Homebrew for Apple Silicon"
-          echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
-          eval "$(/opt/homebrew/bin/brew shellenv)"
-
+          echo "Setting up Homebrew for Intel"
+          echo 'eval "$(/usr/local/bin/brew shellenv)"' >> $HOME/.zprofile
+          eval "$(/usr/local/bin/brew shellenv)"
+      
       - name: Install dependencies
         run: |
           brew tap openrtm/openrtm2
@@ -65,11 +35,41 @@ jobs:
       - name: Build project
         run: |
           bash buildpy.sh
-
+      
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: openrtm2-python-arm64
+          name: openrtm2-python-x86_64
           path: |
             *.tar.gz
             *.sha256
+
+#  buildpy-arm64:
+#    name: OpenRTM Python Formula build on macOS (ARM64)
+#    runs-on: macos-latest
+#
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v4
+#
+#      - name: Set up Homebrew
+#        run: |
+#          echo "Setting up Homebrew for Apple Silicon"
+#          echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
+#          eval "$(/opt/homebrew/bin/brew shellenv)"
+#
+#      - name: Install dependencies
+#        run: |
+#          brew tap openrtm/openrtm2
+#
+#      - name: Build project
+#        run: |
+#          bash buildpy.sh
+#
+#      - name: Upload artifacts
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: openrtm2-python-arm64
+#          path: |
+#            *.tar.gz
+#            *.sha256
