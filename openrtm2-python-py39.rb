@@ -18,9 +18,16 @@ class Openrtm2PythonPy39 < Formula
 
   bottle do
 #    root_url "https://github.com/OpenRTM/homebrew-openrtm2/releases/download/2.0.1"
-#    sha256 cellar: :any_skip_relocation, arm64_ventura: "eba03d164e8a9f853391d8022103bb11b8069adeeca33903a485761c7c5008cd"
-#    sha256 cellar: :any_skip_relocation, monterey:      "5e8681a64342e122d1403c5796c5691e78342778746b3d4d9851668d054fb805"
+    rebuild 1
+    sha256 cellar: :any_skip_relocation, ventura: "9b5df896dc1d6599545ac10693c8e7f35484c7639a202c2c376a688d82387258"
+    rebuild 1
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "711f9fe08e5bcb75244faf2d3a711c8c84842c0887598af5a7358c96d4abecd4"
+    rebuild 1
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "711f9fe08e5bcb75244faf2d3a711c8c84842c0887598af5a7358c96d4abecd4"
+    rebuild 1
+    sha256 cellar: :any_skip_relocation, arm64_sonoma: "711f9fe08e5bcb75244faf2d3a711c8c84842c0887598af5a7358c96d4abecd4"
   end
+
 
   depends_on "python@3.9"
   depends_on "openrtm/omniorb/omniorb-ssl-py39"
