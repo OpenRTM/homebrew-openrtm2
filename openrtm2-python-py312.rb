@@ -17,7 +17,7 @@ class Openrtm2PythonPy312 < Formula
   license "LGPL-2.1"
 
   bottle do
-#    root_url "https://github.com/OpenRTM/homebrew-openrtm2/releases/download/2.0.1"
+    root_url "https://github.com/OpenRTM/homebrew-openrtm2/releases/download/2.0.2"
     rebuild 1
     sha256 cellar: :any_skip_relocation, ventura: "dcc259dc78caebcc2af6eb69bbdc4763549171830934a676a1fbf587235200ec"
     rebuild 1
