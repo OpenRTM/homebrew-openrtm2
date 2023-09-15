@@ -5,13 +5,11 @@ This is [homebrew](https://brew.sh/) tap repository including OpenRTM2 and relat
 
 Currently the following versions of OpenRTM-aist are provided.
 
-- OpenRTM-aist-2.0.1
+- OpenRTM-aist-2.0.2
   - C++ version
-    - on Python 3.8, 3.9, 3.10, 3.11 (omniidl depeneds on python)
+    - on Python 3.9, 3.10, 3.11, 3.12 and 3.13 (omniidl depeneds on python)
   - Python version
-    - on Python 3.8, 3.9, 3.10, 3.11
-  - Java version
-    - needs Java8 (adoptopenjdk8) because of CORBA
+    - on Python 3.9, 3.10, 3.11, 3.12 and 3.13
   - OpenRTP2 (RTCBuildler, RTSystemEditor on Eclipse)
     - needs Java8 (adoptopenjdk8) because of CORBA
   - rtshell
@@ -28,46 +26,41 @@ These packages supports the following macOS versions
 Please install the omniORB bottle "[omniorb-ssl](https://github.com/OpenRTM/homebrew-omniorb)" provided us instead of official "omniorb" bottle. This package automatically installed as a dependency.
 ```shell
 $ brew update
+$ brew install python@3.13
+$ brew unlink python@3.xx <--- if other version's python installed and linked 
+$ brew link python@3.13
+
 $ brew uninstall omniorb  <--- if you already installed omniorb
+$ brew tap openrtm/omniorb
 $ brew tap openrtm/openrtm2
-$ brew install openrtm2-py311 (if you still use Python 3.11)
-$ brew link openrtm2-py311
+$ brew install omniorb-ssl-py313
+$ brew link omniorb-ssl-py313
+$ brew install openrtm2-py313 (if you still use Python 3.13)
+$ brew link openrtm2-py313
 and then please try to run sample components 
-$ /usr/local/share/openrtm-2.0/components/c++/examples/ConsoleInComp
+$ /opt/homebrew/share/openrtm-2.0/components/c++/examples/ConsoleInComp
 ```
 
 ### OpenRTM-aist (Python)
 Please install the omniORBpy bottle "[omniorbpy](https://github.com/OpenRTM/homebrew-omniorb)" provided us. This package is automatically installed as a dependency.
 ```shell
 $ brew update
-$ brew tap openrtm/openrtm2
-$ brew install openrtm2-python-py311 (if you still use Python 3.11)
+$ brew install python@3.13
+$ brew unlink python@3.xx <--- if other version's python installed and linked 
+$ brew link python@3.13
 
-To enable openrtm2-python environment, you have to activate
-other dependent pakcages.
-$ brew link python@3.11
-$ brew link omniorb-ssl-py311
-$ brew link openrtm2-python-py311
-and then please try to run sample components
-$ python3.11 /usr/local/share/openrtm-2.0/components/python3/SimpleIO/ConsoleIn.py
-To execute python RTC directry, please make python3 symbolic link to python3.11.
+$ brew uninstall omniorb  <--- if you already installed omniorb
+$ brew tap openrtm/omniorb
+$ brew tap openrtm/openrtm2
+$ brew install omniorb-ssl-py313
+$ brew install openrtm2-python-py313 (if you still use Python 3.13)
+$ python3.13 /opt/homebrew/share/openrtm-2.0/components/python3/SimpleIO/ConsoleIn.py
+To execute python RTC directry, please make python3 symbolic link to python3.13.
 $ cd /opt/homebrew/bin
 $ ln -s python3.11 python3
 ```
 System's deefault python3 exists in /usr/bin/python3. Symbolic linked python3 
 should be appeared in your command search PATH.
-
-### OpenRTM-aist (Java)
-Java8 is necesarry for OpenRTM-aist-Java and OpenRTP. The adoptopenjdk8 will be installed automatically. 
-```shell
-$ brew update
-$ brew cask install adoptopenjdk8
-$ brew install openrtm/openrtm2/openrtm2-java
-$ cat /usr/local/etc/profile.d/openrtm-aist-java.sh >> ~/.profile
-$ source ~/.profile
-and then please try to run sample components
-$ /usr/local/share/openrtm-2.0/components/java/ConsoleIn.sh
-```
 
 ### OpenRTP-aist (Eclipse tool)
 Due to the OpenRTP dependency, the Cask of Eclipse Temurin8 is required.
