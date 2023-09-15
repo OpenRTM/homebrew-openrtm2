@@ -1,7 +1,7 @@
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Homebrew_logo.svg/159px-Homebrew_logo.svg.png" align="right">
-
 # homebrew-openrtm2
 This is [homebrew](https://brew.sh/) tap repository including OpenRTM2 and related formula.
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Homebrew_logo.svg/159px-Homebrew_logo.svg.png" align="right">
 
 Currently the following versions of OpenRTM-aist are provided.
 
