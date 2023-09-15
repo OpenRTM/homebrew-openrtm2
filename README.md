@@ -1,4 +1,6 @@
 # homebrew-openrtm2
+<img src="https://user-images.githubusercontent.com/11814060/74723192-84c34200-527d-11ea-835f-1496fb9d0bbb.png" align="right">
+
 This is [homebrew](https://brew.sh/) tap repository including OpenRTM2 and related formula.
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Homebrew_logo.svg/159px-Homebrew_logo.svg.png" align="right">
