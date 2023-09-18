@@ -2,74 +2,74 @@ name: OpenRTM C++ Formula Build
 
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - "openrtm2-py[0-9]*.rb"
-      - "build.sh"
-      - ".github/workflows/build.yaml"
-  pull_request:
-    paths:
-      - "openrtm2-py[0-9]*.rb"
-      - "build.sh"
-      - ".github/workflows/build.yaml"
+#  push:
+#    paths:
+#      - "openrtm2-py[0-9]*.rb"
+#      - "build.sh"
+#      - ".github/workflows/build.yaml"
+#  pull_request:
+#    paths:
+#      - "openrtm2-py[0-9]*.rb"
+#      - "build.sh"
+#      - ".github/workflows/build.yaml"
 
-#jobs:
-#  build-x86_64:
-#    name: OpenRTM C++ Formula build on macOS (x86_64)
-#    runs-on: self-hosted
-#
-#    steps:
-#      - name: Checkout code
-#        uses: actions/checkout@v4
-#
-#      - name: Set up Homebrew
-#        run: |
-#          echo "Setting up Homebrew for Intel"
-#          echo 'eval "$(/usr/local/bin/brew shellenv)"' >> $HOME/.zprofile
-#          eval "$(/usr/local/bin/brew shellenv)"
-#      
-#      - name: Install dependencies
-#        run: |
-#          brew tap openrtm/openrtm2
-#
-#      - name: Build project
-#        run: |
-#          bash build.sh
-#      
-#      - name: Upload artifacts
-#        uses: actions/upload-artifact@v4
-#        with:
-#          name: openrtm2-x86_64
-#          path: |
-#            *.tar.gz
-#            *.sha256
+jobs:
+  build-x86_64:
+    name: OpenRTM C++ Formula build on macOS (x86_64)
+    runs-on: self-hosted
 
-#  build-arm64:
-#    name: OpenRTM C++ Formula build on macOS (ARM64)
-#    runs-on: macos-latest
-#
-#    steps:
-#      - name: Checkout code
-#        uses: actions/checkout@v4
-#
-#      - name: Set up Homebrew
-#        run: |
-#          echo "Setting up Homebrew for Apple Silicon"
-#          echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
-#          eval "$(/opt/homebrew/bin/brew shellenv)"
-#
-#      - name: Install dependencies
-#        run: |
-#          brew tap openrtm/openrtm2
-#
-#      - name: Build project
-#        run: |
-#          bash build.sh
-#
-#      - name: Upload artifacts
-#        uses: actions/upload-artifact@v4
-#        with:
-#          name: openrtm2-arm64
-#          path: |
-#            *.tar.gz
-#            *.sha256
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Homebrew
+        run: |
+          echo "Setting up Homebrew for Intel"
+          echo 'eval "$(/usr/local/bin/brew shellenv)"' >> $HOME/.zprofile
+          eval "$(/usr/local/bin/brew shellenv)"
+      
+      - name: Install dependencies
+        run: |
+          brew tap openrtm/openrtm2
+
+      - name: Build project
+        run: |
+          bash build.sh
+      
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: openrtm2-x86_64
+          path: |
+            *.tar.gz
+            *.sha256
+
+  build-arm64:
+    name: OpenRTM C++ Formula build on macOS (ARM64)
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Homebrew
+        run: |
+          echo "Setting up Homebrew for Apple Silicon"
+          echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
+          eval "$(/opt/homebrew/bin/brew shellenv)"
+
+      - name: Install dependencies
+        run: |
+          brew tap openrtm/openrtm2
+
+      - name: Build project
+        run: |
+          bash build.sh
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: openrtm2-arm64
+          path: |
+            *.tar.gz
+            *.sha256
