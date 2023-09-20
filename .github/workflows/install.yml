@@ -36,6 +36,7 @@ jobs:
 
   build-arm64:
     name: OpenRTM C++ Formula build on macOS (ARM64)
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [macos-12, macos-13, macos-latest]
