@@ -41,6 +41,8 @@ install()
     for ((i=0; ${#build[*]}>$i; i++)) ; do
         tmp=(${build[$i]})
         echo "Installing: ${tmp[0]}"
+        brew tap openrtm/omniorb
+        brew tap openrtm/openrtm2
         brew install "${tmp[0]}"
         brew unlink  "${tmp[0]}"
     done
