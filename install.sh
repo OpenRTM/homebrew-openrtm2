@@ -16,13 +16,24 @@ build=(
 
 cleanup()
 {
-    for ((i=0; ${#build[*]}>$i; i++)) ; do
-        tmp=(${build[$i]})
-        echo "Cleanup: ${tmp[0]}"
-        brew unlink "${tmp[0]}"
-        brew remove --ignore-dependencies "${tmp[0]}"
-        brew cleanup -s "${tmp[0]}"
-    done
+    openrtm=`brew list | grep openrtm`
+    if [ "x" = "x$openrtm" ] ; then
+        echo "No OpenRTM installed"
+    else
+        echo "Cleanup: " $openrtm
+        brew unlink $openrtm
+        brew uninstall --ignore-dependencies $openrtm
+        brew cleanup $openrtm
+    fi
+    omniorb=`brew list | grep omniorb`
+    if [ "x" = "x$omniorb" ] ; then
+        echo "No omniORB installed"
+    else
+        echo "Cleanup: " $omniorb
+        brew unlink $omniorb
+        brew uninstall --ignore-dependencies $omniorb
+        brew cleanup $omniorb
+    fi
 }
 
 install()
