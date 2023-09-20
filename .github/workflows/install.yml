@@ -24,6 +24,7 @@ jobs:
 
       - name: Set up Homebrew
         run: |
+          echo `uname -a`
           echo "Setting up Homebrew for Intel"
           echo 'eval "$(/usr/local/bin/brew shellenv)"' >> $HOME/.zprofile
           eval "$(/usr/local/bin/brew shellenv)"
@@ -47,6 +48,7 @@ jobs:
 
       - name: Set up Homebrew
         run: |
+          echo `uname -a`
           echo "Setting up Homebrew for Apple Silicon"
           echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
           eval "$(/opt/homebrew/bin/brew shellenv)"
