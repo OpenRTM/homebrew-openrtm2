@@ -33,10 +33,6 @@ class Openrtm2PythonPy312 < Formula
   depends_on "openrtm/omniorb/omniorb-ssl-py312"
   depends_on "doxygen" => :build
 
-  patch do
-    url "https://raw.githubusercontent.com/OpenRTM/homebrew-openrtm2/refs/heads/main/Patch/setup.py.diff"
-    sha256 "67c8a35cdac497f00e20f2fb4ca1d1ac138ffb6f1b3c6f75c4bea19f53f41a5a"
-  end
 
   def install
     python3 = "#{Formula["python@3.12"].opt_bin}/python3.12"
