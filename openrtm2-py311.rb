@@ -24,9 +24,6 @@ class Openrtm2Py311 < Formula
     sha256 cellar: :any, arm64_sequoia: "eeb6ab0ccc5a86290be542919cbe52374768788fecbf22d5c2fc60edcdb1b4f8"
   end
 
-
-
-
   depends_on "boost"
   depends_on "cmake" => :build
   depends_on "pkg-config" => :build

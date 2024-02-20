@@ -18,8 +18,11 @@ class Openrtm2Py314 < Formula
 
   bottle do
     root_url "https://github.com/OpenRTM/homebrew-openrtm2/releases/download/2.1.0"
+    rebuild 1
+    sha256 cellar: :any, arm64_tahoe: "adb6cc802448d0fdda334dfc87cc9e0432155ffe4b6f47b4c003810e2be24a4c"
+    rebuild 1
+    sha256 cellar: :any, arm64_sequoia: "802e254a1294d2c91e0f0ae086f74c06acf10020fdfe93497360ea53e0ab99f1"
   end
-
 
   depends_on "boost"
   depends_on "cmake" => :build

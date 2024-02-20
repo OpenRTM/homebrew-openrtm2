@@ -24,9 +24,6 @@ class Openrtm2Py313 < Formula
     sha256 cellar: :any, arm64_tahoe: "9a5ad846c3161af3f172a16d19a05e27bc3e33b78e063a351f5a009a2d4825ca"
   end
 
-
-
-
   depends_on "boost"
   depends_on "cmake" => :build
   depends_on "pkg-config" => :build

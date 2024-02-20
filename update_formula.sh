@@ -67,14 +67,12 @@ $bottle_block"
       echo "$updated_bottle_block" >> new_bottle_blocks.tmp
       echo "$new_bottle_blocks" >> new_bottle_blocks.tmp
       echo "  end" >> new_bottle_blocks.tmp
-      echo "" >> new_bottle_blocks.tmp
       new_bottle_blocks=$(sed 's/$/\\/' new_bottle_blocks.tmp)
       rm new_bottle_blocks.tmp
 
       # replace bottle block with new_bottle_blocks.tmp
       sed -i.bak "/bottle do/,/end/c\\
-$new_bottle_blocks
-" $rb_file
+$new_bottle_blocks" $rb_file
       echo "Updated bottle block in $rb_file"
     else
       echo "No existing bottle block found in $rb_file"
