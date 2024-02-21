@@ -10,6 +10,8 @@
 # $ brew link python@3.10
 #============================================================
 class Openrtm2PythonPy310 < Formula
+  PYTHON_VERSION = "3.10"
+
   desc "OpenRTM-aist: RT-Middleware and OMG RTC implementation in Python implemented by AIST"
   homepage "https://openrtm.org"
   url "https://github.com/OpenRTM/OpenRTM-aist-Python/archive/refs/tags/v2.1.0.tar.gz"
@@ -20,16 +22,14 @@ class Openrtm2PythonPy310 < Formula
     root_url "https://github.com/OpenRTM/homebrew-openrtm2/releases/download/2.1.0"
   end
 
-  python_version = "3.10"
-
-  depends_on "python@#{python_version}"
+  depends_on "python@3.10" # cannot refer PYTHON_VERSION here
   depends_on "openrtm/omniorb/omniorb-ssl-py310"
   depends_on "doxygen" => :build
 
 
   def install
-    python3 = "#{Formula["python@#{python_version}"].opt_bin}/python#{python_version}"
-
+    python3 = "#{Formula["python@#{PYTHON_VERSION}"].opt_bin}/python#{PYTHON_VERSION}"
+    
     system python3, "-m", "pip", "install", "--break-system-packages", "build"
     system python3, "-m", "pip", "install", "--break-system-packages", "setuptools"
     system python3, "-m", "build"
@@ -39,22 +39,23 @@ class Openrtm2PythonPy310 < Formula
 
     # copy examples to share_dir
     src_examples_candidates = [
-      prefix/"lib/python#{python_version}/site-packages/OpenRTM_aist/examples",HOMEBREW_PREFIX/"lib/python#{python_version}/site-packages/OpenRTM_aist/examples",
+      prefix/"lib/python#{PYTHON_VERSION}/site-packages/OpenRTM_aist/examples",
+      HOMEBREW_PREFIX/"lib/python#{PYTHON_VERSION}/site-packages/OpenRTM_aist/examples",
     ]
+
     src_examples = src_examples_candidates.find(&:exist?)
     dst_examples = prefix/"share/openrtm-2.1/components/python3"
 
-    mkdir_p dst_examples
-    cp_r src_examples, dst_examples
+    if src_examples
+      mkdir_p dst_examples
+      cp_r src_examples, dst_examples
+    end
 
     # add executable permission to example scripts
-    example_dir="#{prefix}/share/openrtm-2.1"
-    Find.find(example_dir) do |path|
-      if File.file?(path) && path.end_with?('.py')
-        File.chmod(0755, path)
-      end
-      if File.file?(path) && path.end_with?('.sh')
-        File.chmod(0755, path)
+    example_dir = prefix/"share/openrtm-2.1"
+    if example_dir.exist?
+      Find.find(example_dir) do |path|
+        File.chmod(0755, path) if File.file?(path) && path.end_with?(".py", ".sh")
       end
     end
   end
