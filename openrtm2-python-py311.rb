@@ -10,6 +10,8 @@
 # $ brew link python@3.11
 #============================================================
 class Openrtm2PythonPy311 < Formula
+  PYTHON_VERSION = "3.11"
+
   desc "OpenRTM-aist: RT-Middleware and OMG RTC implementation in Python implemented by AIST"
   homepage "https://openrtm.org"
   url "https://github.com/OpenRTM/OpenRTM-aist-Python/archive/refs/tags/v2.1.0.tar.gz"
@@ -25,7 +27,7 @@ class Openrtm2PythonPy311 < Formula
   depends_on "doxygen" => :build
 
   def install
-    python3 = "#{Formula["python@3.11"].opt_bin}/python3.11"
+    python3 = "#{Formula["python@#{PYTHON_VERSION}"].opt_bin}/python#{PYTHON_VERSION}"
 
     system python3, "-m", "pip", "install", "--break-system-packages", "build"
     system python3, "-m", "pip", "install", "--break-system-packages", "setuptools"
@@ -35,20 +37,24 @@ class Openrtm2PythonPy311 < Formula
                     "dist/openrtm_aist_python-2.0.2-py3-none-any.whl"
 
     # copy examples to share_dir
-    src_examples = HOMEBREW_PREFIX/"lib/python3.11/site-packages/OpenRTM_aist/examples"
+    src_examples_candidates = [
+      prefix/"lib/python#{PYTHON_VERSION}/site-packages/OpenRTM_aist/examples",
+      HOMEBREW_PREFIX/"lib/python#{PYTHON_VERSION}/site-packages/OpenRTM_aist/examples",
+    ]
+
+    src_examples = src_examples_candidates.find(&:exist?)
     dst_examples = prefix/"share/openrtm-2.1/components/python3"
 
-    mkdir_p dst_examples
-    cp_r src_examples, dst_examples
+    if src_examples
+      mkdir_p dst_examples
+      cp_r src_examples, dst_examples
+    end
 
     # add executable permission to example scripts
-    example_dir="#{prefix}/share/openrtm-2.0"
-    Find.find(example_dir) do |path|
-      if File.file?(path) && path.end_with?('.py')
-        File.chmod(0755, path)
-      end
-      if File.file?(path) && path.end_with?('.sh')
-        File.chmod(0755, path)
+    example_dir = prefix/"share/openrtm-2.1"
+    if example_dir.exist?
+      Find.find(example_dir) do |path|
+        File.chmod(0755, path) if File.file?(path) && path.end_with?(".py", ".sh")
       end
     end
   end

@@ -2,10 +2,10 @@
 
 build=(
     "openrtm2-python-py310 omniorb-ssl-py310"
-#    "openrtm2-python-py311 omniorb-ssl-py311"
-#    "openrtm2-python-py312 omniorb-ssl-py312"
-#    "openrtm2-python-py313 omniorb-ssl-py313"
-#    "openrtm2-python-py314 omniorb-ssl-py314"
+    "openrtm2-python-py311 omniorb-ssl-py311"
+    "openrtm2-python-py312 omniorb-ssl-py312"
+    "openrtm2-python-py313 omniorb-ssl-py313"
+    "openrtm2-python-py314 omniorb-ssl-py314"
 )
 
 bottle()
