@@ -30,12 +30,24 @@ rename()
 
 bottling()
 {
+    pyver=$(echo "$1" | sed -n 's/.*py\([0-9][0-9]*\)$/\1/p')
+    pyver="${pyver:0:1}.${pyver:1}"
+
+    echo "Using python@${pyver}"
+    brew install "python@${pyver}"
+    brew link "python@${pyver}"
+
+    export PATH="$(brew --prefix python@${pyver})/bin:$PATH"
+    hash -r
+
     echo "Installing " $2
     brew install $2
-    brew link $2
+    brew link --overwrite $2
+
     echo "Bottling " $1
     bottle $1
     rename
+
     echo "unlinking " $1
     brew unlink $1
     echo "unlinking " $2
