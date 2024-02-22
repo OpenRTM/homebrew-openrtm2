@@ -34,7 +34,7 @@ class Openrtm2PythonPy311 < Formula
     system python3, "-m", "build"
     system python3, "-m", "pip",  "install",\
                     *std_pip_args(build_isolation: true),\
-                    "dist/openrtm_aist_python-2.0.2-py3-none-any.whl"
+                    "dist/openrtm_aist_python-2.1.0-py3-none-any.whl"
 
     # copy examples to share_dir
     src_examples_candidates = [
