@@ -40,6 +40,19 @@ jobs:
           brew tap openrtm/omniorb
           brew tap openrtm/openrtm2
 
+      - name: Debug formula
+        run: |
+          FORMULA="$(brew --repo openrtm/openrtm2)/openrtm2-python-py310.rb"
+
+          echo "===== Formula path ====="
+          echo "$FORMULA"
+
+          echo "===== examples related lines ====="
+          grep -n "OpenRTM_aist/examples\|src_examples\|cp_r\|PYTHON_VERSION" "$FORMULA" || true
+
+          echo "===== Formula snippet ====="
+          sed -n '30,80p' "$FORMULA"
+
       - name: Build project
         run: |
           bash buildpy.sh
