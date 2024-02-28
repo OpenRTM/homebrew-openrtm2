@@ -2,45 +2,18 @@ name: OpenRTM C++/Python installation check
 
 on:
   workflow_dispatch:
-#  push:
-#    paths:
-#      - "openrtm2-py[0-9]*.rb"
-#      - "build.sh"
-#      - ".github/workflows/build.yaml"
-#  pull_request:
-#    paths:
-#      - "openrtm2-py[0-9]*.rb"
-#      - "build.sh"
-#      - ".github/workflows/build.yaml"
 
 jobs:
-  build-x86_64:
-    name: OpenRTM C++ Formula build on macOS (x86_64)
-    runs-on: self-hosted
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Homebrew
-        run: |
-          echo `uname -a`
-          echo "Setting up Homebrew for Intel"
-          echo 'eval "$(/usr/local/bin/brew shellenv)"' >> $HOME/.zprofile
-          eval "$(/usr/local/bin/brew shellenv)"
-
-      - name: Build project
-        run: |
-          bash install.sh
-          brew list | grep omniorb
-          brew list | grep openrtm
-
-  build-arm64:
-    name: OpenRTM C++ Formula build on macOS (ARM64)
+  build:
+    name: Build on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-12, macos-13, macos-latest]
+        include:
+          - os: macos-15   # arm64 Sequoia
+            artifact_name: openrtm2-arm64-sequoia
+          - os: macos-26   # arm64 Tahoe (macOS 26 = Tahoe)
+            artifact_name: openrtm2-arm64-tahoe
 
     steps:
       - name: Checkout code
@@ -48,10 +21,26 @@ jobs:
 
       - name: Set up Homebrew
         run: |
-          echo `uname -a`
-          echo "Setting up Homebrew for Apple Silicon"
           echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
           eval "$(/opt/homebrew/bin/brew shellenv)"
+
+      - name: Install dependencies
+        run: |
+          brew tap openrtm/omniorb
+          brew tap openrtm/openrtm2
+
+      - name: Debug formula
+        run: |
+          FORMULA="$(brew --repo openrtm/openrtm2)/openrtm2-python-py310.rb"
+
+          echo "===== Formula path ====="
+          echo "$FORMULA"
+
+          echo "===== examples related lines ====="
+          grep -n "OpenRTM_aist/examples\|src_examples\|cp_r\|PYTHON_VERSION" "$FORMULA" || true
+
+          echo "===== Formula snippet ====="
+          sed -n '30,80p' "$FORMULA"
 
       - name: Build project
         run: |
