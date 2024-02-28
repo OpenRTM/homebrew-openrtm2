@@ -45,6 +45,7 @@ install()
         brew tap openrtm/openrtm2
         brew install "${tmp[0]}"
         brew unlink  "${tmp[0]}"
+        brew unlink  "${tmp[1]}"
     done
 
 }
