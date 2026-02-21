@@ -13,7 +13,7 @@ class Openrtm2PythonPy311 < Formula
   desc "OpenRTM-aist: RT-Middleware and OMG RTC implementation in Python implemented by AIST"
   homepage "https://openrtm.org"
   url "https://github.com/OpenRTM/OpenRTM-aist-Python/archive/refs/tags/v2.1.0.tar.gz"
-  sha256 "3462bb01dacf69b058706e636cafd817e3abe97631b3056d0fa9d38f2e43fe6e"
+  sha256 "d07942eed317e96cd5a2da440464cd209bae4356a528d06dbcfbaa26473040c4"
   license "LGPL-2.1"
 
   bottle do
