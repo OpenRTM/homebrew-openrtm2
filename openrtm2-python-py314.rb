@@ -4,38 +4,28 @@
 # Author: Noriaki Ando <Noriaki.Ando@gmail.com>
 # GitHub: https://github.com/OpenRTM/homebrew-openrtm2
 #
-# This is the formula for OpenRTM-aist (Python) for python 3.13.
-# To use this formula/bottle, switch python into python 3.13.
+# This is the formula for OpenRTM-aist (Python) for python 3.14.
+# To use this formula/bottle, switch python into python 3.14.
 # $ brew unlink python3 (unlink python 3.X)
-# $ brew link python@3.13
+# $ brew link python@3.14
 #============================================================
-class Openrtm2PythonPy313 < Formula
+class Openrtm2PythonPy314 < Formula
   desc "OpenRTM-aist: RT-Middleware and OMG RTC implementation in Python implemented by AIST"
   homepage "https://openrtm.org"
-  url "https://github.com/OpenRTM/OpenRTM-aist-Python/archive/refs/tags/v2.0.2.tar.gz"
-  sha256 "83427e7da9169391d964c9de71a836089d6a475c79742d604353f0c6f43233c5"
+  url "https://github.com/OpenRTM/OpenRTM-aist-Python/archive/refs/tags/v2.1.0.tar.gz"
+  sha256 "3462bb01dacf69b058706e636cafd817e3abe97631b3056d0fa9d38f2e43fe6e"
   license "LGPL-2.1"
 
   bottle do
-    root_url "https://github.com/OpenRTM/homebrew-openrtm2/releases/download/2.0.2"
-    rebuild 1
-    sha256 cellar: :any_skip_relocation, ventura: "2d2a9f1c51507b4d94cb9c205eefa2b8b31b2d9953783078066823dfb61c8814"
-    rebuild 1
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "0d2df2cb01a0d20c0dc4e2ae26ac880789ecdb4a35624b7ae7235db4a955362e"
-    rebuild 1
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "0d2df2cb01a0d20c0dc4e2ae26ac880789ecdb4a35624b7ae7235db4a955362e"
-    rebuild 1
-    sha256 cellar: :any_skip_relocation, arm64_sonoma: "0d2df2cb01a0d20c0dc4e2ae26ac880789ecdb4a35624b7ae7235db4a955362e"
+    root_url "https://github.com/OpenRTM/homebrew-openrtm2/releases/download/2.1.0"
   end
 
-
-  depends_on "python@3.13"
-  depends_on "openrtm/omniorb/omniorb-ssl-py313"
+  depends_on "python@3.14"
+  depends_on "openrtm/omniorb/omniorb-ssl-py314"
   depends_on "doxygen" => :build
 
-
   def install
-    python3 = "#{Formula["python@3.13"].opt_bin}/python3.13"
+    python3 = "#{Formula["python@3.14"].opt_bin}/python3.14"
 
     system python3, "-m", "pip", "install", "--break-system-packages", "build"
     system python3, "-m", "pip", "install", "--break-system-packages", "setuptools"

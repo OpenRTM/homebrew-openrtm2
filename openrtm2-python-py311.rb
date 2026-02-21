@@ -12,20 +12,12 @@
 class Openrtm2PythonPy311 < Formula
   desc "OpenRTM-aist: RT-Middleware and OMG RTC implementation in Python implemented by AIST"
   homepage "https://openrtm.org"
-  url "https://github.com/OpenRTM/OpenRTM-aist-Python/archive/refs/tags/v2.0.2.tar.gz"
-  sha256 "83427e7da9169391d964c9de71a836089d6a475c79742d604353f0c6f43233c5"
+  url "https://github.com/OpenRTM/OpenRTM-aist-Python/archive/refs/tags/v2.1.0.tar.gz"
+  sha256 "3462bb01dacf69b058706e636cafd817e3abe97631b3056d0fa9d38f2e43fe6e"
   license "LGPL-2.1"
 
   bottle do
-    root_url "https://github.com/OpenRTM/homebrew-openrtm2/releases/download/2.0.2"
-    rebuild 1
-    sha256 cellar: :any_skip_relocation, ventura: "6211e3e20802bd7cea27d4aec4fce059a3982909b79158d5c406e946665fcc82"
-    rebuild 1
-    sha256 cellar: :any_skip_relocation, arm64_sonoma: "fce720bf914ef8502ec0bb5f8f7fd553b585bbf27f8bb6c1e08f589924bf53bf"
-    rebuild 1
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "fce720bf914ef8502ec0bb5f8f7fd553b585bbf27f8bb6c1e08f589924bf53bf"
-    rebuild 1
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "fce720bf914ef8502ec0bb5f8f7fd553b585bbf27f8bb6c1e08f589924bf53bf"
+    root_url "https://github.com/OpenRTM/homebrew-openrtm2/releases/download/2.1.0"
   end
 
 
