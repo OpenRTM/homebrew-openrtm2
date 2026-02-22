@@ -32,7 +32,7 @@ class Openrtm2PythonPy313 < Formula
     system python3, "-m", "build"
     system python3, "-m", "pip",  "install",\
                     *std_pip_args(build_isolation: true),\
-                    "dist/OpenRTM_aist_Python-2.0.2-py3-none-any.whl"
+                    "dist/openrtm_aist_python-2.1.0-py3-none-any.whl"
 
     # add executable permission to example scripts
     example_dir="#{prefix}/share/openrtm-2.0"
