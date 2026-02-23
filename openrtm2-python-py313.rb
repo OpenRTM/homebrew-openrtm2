@@ -35,7 +35,7 @@ class Openrtm2PythonPy313 < Formula
                     "dist/openrtm_aist_python-2.1.0-py3-none-any.whl"
 
     # add executable permission to example scripts
-    example_dir="#{prefix}/share/openrtm-2.0"
+    example_dir="#{prefix}/share/openrtm-2.1"
     Find.find(example_dir) do |path|
       if File.file?(path) && path.end_with?('.py')
         File.chmod(0755, path)
