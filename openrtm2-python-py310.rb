@@ -20,13 +20,15 @@ class Openrtm2PythonPy310 < Formula
     root_url "https://github.com/OpenRTM/homebrew-openrtm2/releases/download/2.1.0"
   end
 
-  depends_on "python@3.10"
+  python_version = "3.10"
+
+  depends_on "python@#{python_version}"
   depends_on "openrtm/omniorb/omniorb-ssl-py310"
   depends_on "doxygen" => :build
 
 
   def install
-    python3 = "#{Formula["python@3.10"].opt_bin}/python3.10"
+    python3 = "#{Formula["python@#{python_version}"].opt_bin}/python#{python_version}"
 
     system python3, "-m", "pip", "install", "--break-system-packages", "build"
     system python3, "-m", "pip", "install", "--break-system-packages", "setuptools"
@@ -36,7 +38,10 @@ class Openrtm2PythonPy310 < Formula
                     "dist/openrtm_aist_python-2.1.0-py3-none-any.whl"
 
     # copy examples to share_dir
-    src_examples = HOMEBREW_PREFIX/"lib/python3.10/site-packages/OpenRTM_aist/examples"
+    src_examples_candidates = [
+      prefix/"lib/python#{python_version}/site-packages/OpenRTM_aist/examples",HOMEBREW_PREFIX/"lib/python#{python_version}/site-packages/OpenRTM_aist/examples",
+    ]
+    src_examples = src_examples_candidates.find(&:exist?)
     dst_examples = prefix/"share/openrtm-2.1/components/python3"
 
     mkdir_p dst_examples
