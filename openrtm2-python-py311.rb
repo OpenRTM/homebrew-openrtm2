@@ -13,18 +13,16 @@ class Openrtm2PythonPy311 < Formula
   desc "OpenRTM-aist: RT-Middleware and OMG RTC implementation in Python implemented by AIST"
   homepage "https://openrtm.org"
   url "https://github.com/OpenRTM/OpenRTM-aist-Python/archive/refs/tags/v2.1.0.tar.gz"
-  sha256 "d07942eed317e96cd5a2da440464cd209bae4356a528d06dbcfbaa26473040c4"
+  sha256 "3462bb01dacf69b058706e636cafd817e3abe97631b3056d0fa9d38f2e43fe6e"
   license "LGPL-2.1"
 
   bottle do
     root_url "https://github.com/OpenRTM/homebrew-openrtm2/releases/download/2.1.0"
   end
 
-
   depends_on "python@3.11"
   depends_on "openrtm/omniorb/omniorb-ssl-py311"
   depends_on "doxygen" => :build
-
 
   def install
     python3 = "#{Formula["python@3.11"].opt_bin}/python3.11"
@@ -34,10 +32,17 @@ class Openrtm2PythonPy311 < Formula
     system python3, "-m", "build"
     system python3, "-m", "pip",  "install",\
                     *std_pip_args(build_isolation: true),\
-                    "dist/openrtm_aist_python-2.1.0-py3-none-any.whl"
+                    "dist/openrtm_aist_python-2.0.2-py3-none-any.whl"
+
+    # copy examples to share_dir
+    src_examples = HOMEBREW_PREFIX/"lib/python3.11/site-packages/OpenRTM_aist/examples"
+    dst_examples = prefix/"share/openrtm-2.1/components/python3"
+
+    mkdir_p dst_examples
+    cp_r src_examples, dst_examples
 
     # add executable permission to example scripts
-    example_dir="#{prefix}/share/openrtm-2.1"
+    example_dir="#{prefix}/share/openrtm-2.0"
     Find.find(example_dir) do |path|
       if File.file?(path) && path.end_with?('.py')
         File.chmod(0755, path)

@@ -34,6 +34,13 @@ class Openrtm2PythonPy312 < Formula
                     *std_pip_args(build_isolation: true),\
                     "dist/openrtm_aist_python-2.1.0-py3-none-any.whl"
 
+    # copy examples to share_dir
+    src_examples = HOMEBREW_PREFIX/"lib/python3.13/site-packages/OpenRTM_aist/examples"
+    dst_examples = prefix/"share/openrtm-2.1/components/python3"
+
+    mkdir_p dst_examples
+    cp_r src_examples, dst_examples
+
     # add executable permission to example scripts
     example_dir="#{prefix}/share/openrtm-2.1"
     Find.find(example_dir) do |path|
