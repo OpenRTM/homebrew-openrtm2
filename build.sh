@@ -8,7 +8,7 @@ build=(
 #    "openrtm2-py311 omniorb-ssl-py311"
 #    "openrtm2-py312 omniorb-ssl-py312"
 #    "openrtm2-py313 omniorb-ssl-py313"
-    "openrtm2-py314 omniorb-ssl-py314
+    "openrtm2-py314 omniorb-ssl-py314"
 )
 
 bottle()
