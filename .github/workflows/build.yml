@@ -36,7 +36,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          brew tap openrtm/openrtm2
+          brew tap openrtm/omniorb
 
       - name: Build project
         run: |
