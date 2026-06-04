@@ -8,11 +8,11 @@ This is [homebrew](https://brew.sh/) tap repository including OpenRTM2 and relat
 
 Currently the following versions of OpenRTM-aist are provided.
 
-- OpenRTM-aist-2.0.2
+- OpenRTM-aist-2.1.0
   - C++ version
-    - on Python 3.9, 3.10, 3.11, 3.12 and 3.13 (omniidl depeneds on python)
+    - on Python 3.10, 3.11, 3.12, 3.13 and 3.14 (omniidl depeneds on python)
   - Python version
-    - on Python 3.9, 3.10, 3.11, 3.12 and 3.13
+    - on Python 3.10, 3.11, 3.12, 3.13 and 3.14
   - OpenRTP2 (RTCBuildler, RTSystemEditor on Eclipse)
     - needs Java8 (adoptopenjdk8) because of CORBA
   - rtshell
