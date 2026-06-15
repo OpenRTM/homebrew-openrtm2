@@ -41,7 +41,7 @@ $ brew link omniorb-ssl-py313
 $ brew install openrtm2-py313 (if you still use Python 3.13)
 $ brew link openrtm2-py313
 and then please try to run sample components 
-$ /opt/homebrew/share/openrtm-2.0/components/c++/examples/ConsoleInComp
+$ /opt/homebrew/share/openrtm-2.1/components/c++/examples/ConsoleInComp
 ```
 
 ### OpenRTM-aist (Python)
@@ -57,7 +57,7 @@ $ brew tap openrtm/omniorb
 $ brew tap openrtm/openrtm2
 $ brew install omniorb-ssl-py313
 $ brew install openrtm2-python-py313 (if you still use Python 3.13)
-$ python3.13 /opt/homebrew/share/openrtm-2.0/components/python3/SimpleIO/ConsoleIn.py
+$ python3.13 /opt/homebrew/share/openrtm-2.1/components/python3/SimpleIO/ConsoleIn.py
 To execute python RTC directry, please make python3 symbolic link to python3.13.
 $ cd /opt/homebrew/bin
 $ ln -s python3.11 python3
@@ -71,7 +71,7 @@ Due to the OpenRTP dependency, the Cask of Eclipse Temurin8 is required.
 ```shell
 $ brew update
 $ brew tap openrtm/openrtm2
-$ brew install --cask homebrew/cask-versions/temurin8   <- Installing Java8
+$ brew install --cask temurin8   <- Installing Java8
 $ brew install openrtp2     <- English version
 $ brew install openrtp2-ja  <- Japanese version
 $ open -a OpenRTP2-en
