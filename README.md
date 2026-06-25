@@ -57,7 +57,7 @@ $ brew tap openrtm/omniorb
 $ brew tap openrtm/openrtm2
 $ brew install omniorb-ssl-py313
 $ brew install openrtm2-python-py313 (if you still use Python 3.13)
-$ python3.13 /opt/homebrew/share/openrtm-2.1/components/python3/SimpleIO/ConsoleIn.py
+$ python3.13 /opt/homebrew/share/openrtm-2.1/components/python3/examples/SimpleIO/ConsoleIn.py
 To execute python RTC directry, please make python3 symbolic link to python3.13.
 $ cd /opt/homebrew/bin
 $ ln -s python3.11 python3
